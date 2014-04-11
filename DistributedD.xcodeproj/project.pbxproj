@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2F3790F318F0A5A1007B3422 /* LogIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3790F218F0A5A1007B3422 /* LogIn.m */; };
-		2F3790F618F0AB6A007B3422 /* SignUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3790F518F0AB6A007B3422 /* SignUp.m */; };
 		2F508CC918E6615F00C4EB02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508CC818E6615F00C4EB02 /* Foundation.framework */; };
 		2F508CCB18E6615F00C4EB02 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508CCA18E6615F00C4EB02 /* CoreGraphics.framework */; };
 		2F508CCD18E6615F00C4EB02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508CCC18E6615F00C4EB02 /* UIKit.framework */; };
@@ -27,6 +26,8 @@
 		2F508D0118E6660B00C4EB02 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508D0018E6660B00C4EB02 /* MapKit.framework */; };
 		2F508D0418E6797D00C4EB02 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508D0218E6797D00C4EB02 /* CoreImage.framework */; };
 		2F508D0518E6797D00C4EB02 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508D0318E6797D00C4EB02 /* ImageIO.framework */; };
+		2FBBA3CB18F5F98000392DAD /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBBA3CA18F5F98000392DAD /* SignUpViewController.m */; };
+		2FBBA3D018F6078600392DAD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBBA3CF18F6078600392DAD /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +43,6 @@
 /* Begin PBXFileReference section */
 		2F3790F118F0A5A1007B3422 /* LogIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogIn.h; sourceTree = "<group>"; };
 		2F3790F218F0A5A1007B3422 /* LogIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogIn.m; sourceTree = "<group>"; };
-		2F3790F418F0AB6A007B3422 /* SignUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUp.h; sourceTree = "<group>"; };
-		2F3790F518F0AB6A007B3422 /* SignUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUp.m; sourceTree = "<group>"; };
 		2F508CC518E6615F00C4EB02 /* DistributedD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistributedD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F508CC818E6615F00C4EB02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2F508CCA18E6615F00C4EB02 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -68,6 +67,9 @@
 		2F508D0018E6660B00C4EB02 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2F508D0218E6797D00C4EB02 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		2F508D0318E6797D00C4EB02 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		2FBBA3C918F5F98000392DAD /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		2FBBA3CA18F5F98000392DAD /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		2FBBA3CF18F6078600392DAD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBBA3D018F6078600392DAD /* CoreLocation.framework in Frameworks */,
 				2F508D0418E6797D00C4EB02 /* CoreImage.framework in Frameworks */,
 				2F508D0518E6797D00C4EB02 /* ImageIO.framework in Frameworks */,
 				2F508D0118E6660B00C4EB02 /* MapKit.framework in Frameworks */,
@@ -119,6 +122,7 @@
 		2F508CC718E6615F00C4EB02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2FBBA3CF18F6078600392DAD /* CoreLocation.framework */,
 				2F508D0218E6797D00C4EB02 /* CoreImage.framework */,
 				2F508D0318E6797D00C4EB02 /* ImageIO.framework */,
 				2F508D0018E6660B00C4EB02 /* MapKit.framework */,
@@ -138,8 +142,8 @@
 				2F508CDA18E6615F00C4EB02 /* Main.storyboard */,
 				2F3790F118F0A5A1007B3422 /* LogIn.h */,
 				2F3790F218F0A5A1007B3422 /* LogIn.m */,
-				2F3790F418F0AB6A007B3422 /* SignUp.h */,
-				2F3790F518F0AB6A007B3422 /* SignUp.m */,
+				2FBBA3C918F5F98000392DAD /* SignUpViewController.h */,
+				2FBBA3CA18F5F98000392DAD /* SignUpViewController.m */,
 				2F508CDD18E6615F00C4EB02 /* FirstViewController.h */,
 				2F508CDE18E6615F00C4EB02 /* FirstViewController.m */,
 				2F508CE018E6615F00C4EB02 /* SecondViewController.h */,
@@ -278,10 +282,10 @@
 			files = (
 				2F508CE218E6615F00C4EB02 /* SecondViewController.m in Sources */,
 				2F3790F318F0A5A1007B3422 /* LogIn.m in Sources */,
+				2FBBA3CB18F5F98000392DAD /* SignUpViewController.m in Sources */,
 				2F508CD918E6615F00C4EB02 /* AppDelegate.m in Sources */,
 				2F508CDF18E6615F00C4EB02 /* FirstViewController.m in Sources */,
 				2F508CD518E6615F00C4EB02 /* main.m in Sources */,
-				2F3790F618F0AB6A007B3422 /* SignUp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

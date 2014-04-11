@@ -14,7 +14,7 @@
 @implementation LogIn
 
 @synthesize email,psw;
-@synthesize signUp, signIn;
+@synthesize signIn,signUp;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,26 +58,37 @@
 
 - (IBAction)signInButton:(id)sender {
     
-    NSString *urlBaseString = @"http://www.twitter.com/";
+    NSString *urlBaseString = @"http://ec2-54-85-248-35.compute-1.amazonaws.com:8000/csignin?";
+    NSString *emailText =email.text;
+    NSString *pswText = psw.text;
+    NSString *urlFinal = [NSString stringWithFormat: @"%@Email=%@&Psw=%@",urlBaseString,emailText,pswText];
+    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:urlBaseString]];
+    [request setURL:[NSURL URLWithString:urlFinal]];
+    //Change to urlFinal!!!!
 
     [request setHTTPMethod:@"GET"];
 
     NSHTTPURLResponse *response = nil;
 
     [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    
+    NSLog(@"Code:%d",[response statusCode]);
+    
     if ([response statusCode] == 200)
     {
         NSLog(@"!!!!!!!!!");
         NSLog(@"ButtonPressed");
+        NSLog(@"%@",urlFinal);
         [self performSegueWithIdentifier:@"signIn" sender:self]; //Change the seque identifier
-
-
     }
-    else
+    else if([response statusCode] == 404)
     {
-        NSLog(@"Seccess!");
+        UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"User dose not exist"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        NSLog(@"%@",urlFinal);
+
+        [wrongAlert show];
+
     }
 
 

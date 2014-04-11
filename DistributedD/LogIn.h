@@ -27,5 +27,6 @@
 - (IBAction)emailTextField_DidEndOnExit:(id)sender;
 - (IBAction)pswTextField_DidEndOnExit:(id)sender;
 - (IBAction)signInButton:(id)sender;
+- (IBAction)View_TouchDown:(id)sender;
 
 @end
