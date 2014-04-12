@@ -48,14 +48,17 @@
      */
     MKCoordinateSpan theSpan;
     //The span of the map, the lower the more acurate
-    theSpan.latitudeDelta = 2;
-    theSpan.longitudeDelta = 2;
+    theSpan.latitudeDelta = 0.01;
+    theSpan.longitudeDelta = 0.01;
     MKCoordinateRegion theRegion;
     theRegion.center = [curLocation coordinate];
     theRegion.span = theSpan;
     [mapView setRegion:theRegion];
     
-    MyMapAnnotation *annotation = [[MyMapAnnotation alloc] initWithName:@"test" address:@"test" coordinate:currentLocation] ;
+    currentLocation.latitude = 42.44469;
+    currentLocation.longitude = -78.94886;
+    
+    MyMapAnnotation *annotation = [[MyMapAnnotation alloc] initWithName:@"test1" address:@"test1" coordinate:currentLocation] ;
     [_mapView addAnnotation:annotation];
     
 }
@@ -89,8 +92,6 @@
     lng = [[NSString alloc] initWithFormat:@"%g",
            newLocation.coordinate.longitude];
     
-    currentLocation.latitude = newLocation.coordinate.latitude;
-    currentLocation.longitude = newLocation.coordinate.longitude;
     
     curLocation = newLocation;
     
@@ -136,20 +137,20 @@
 */
 
 
-- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     if ([annotation isKindOfClass:[MyMapAnnotation class]]) {
         // try to dequeue an existing pin view first
-        static NSString* travellerAnnotationIdentifier = @"TravellerAnnotationIdentifier";
+        static NSString* MyLocation = @"MyLocation";
         MKPinAnnotationView* pinView = (MKPinAnnotationView *)
-        [mapView dequeueReusableAnnotationViewWithIdentifier:travellerAnnotationIdentifier];
+        [mapView dequeueReusableAnnotationViewWithIdentifier:MyLocation];
         if (!pinView)
         {
             // if an existing pin view was not available, create one
             MKAnnotationView* customPinView = [[MKAnnotationView alloc]
-                                                initWithAnnotation:annotation reuseIdentifier:travellerAnnotationIdentifier];
+                                                initWithAnnotation:annotation reuseIdentifier:MyLocation];
             customPinView.canShowCallout = YES;  //很重要，运行点击弹出标签
             UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             [rightButton addTarget:self

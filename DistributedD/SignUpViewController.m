@@ -87,7 +87,7 @@
     NSString *nameText = name.text;
     NSString *ageText = age.text;
     NSString *urlFinal = [NSString stringWithFormat:
-                          @"%@Email=%@&Psw=%@&Name=%@&Age=%@&Sex=M&Location=<%@,%@>",
+                          @"%@Email=%@&Psw=%@&Name=%@&Age=%@&Sex=M&Location=%@+%@",
                           urlBaseString,emailText,pswText,nameText,ageText,lat,lng];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
