@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MyMapAnnotation.h"
+#import "AppDelegate.h"
 
 
 @interface BusinessMapViewController : UIViewController <MKMapViewDelegate> {
@@ -18,6 +19,7 @@
 
 }
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
+
 
 @end
 

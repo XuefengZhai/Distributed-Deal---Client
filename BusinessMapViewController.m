@@ -15,11 +15,13 @@
     CLLocation *curLocation;
     
     
+    
 }
 
 @end
 
 @implementation BusinessMapViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,8 +60,10 @@
     currentLocation.latitude = 42.44469;
     currentLocation.longitude = -78.94886;
     
-    MyMapAnnotation *annotation = [[MyMapAnnotation alloc] initWithName:@"test1" address:@"test1" coordinate:currentLocation] ;
-    [_mapView addAnnotation:annotation];
+    NSLog(@"loadBusinesses");
+    [self loadBusinessesFromCloud];
+    
+    
     
 }
 
@@ -175,6 +179,59 @@
 {
     [self performSegueWithIdentifier:@"detail" sender:self];
 }
+
+
+- (void)loadBusinesses
+{
+    
+    NSManagedObjectContext *context = ((AppDelegate*)([[UIApplication sharedApplication] delegate])).managedObjectContext;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Business" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    // Edit the sort key as appropriate.
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSArray *businesses = [context executeFetchRequest:fetchRequest error:nil];
+    
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    for(NSManagedObject *object in businesses){
+        MyMapAnnotation *business = [[MyMapAnnotation alloc] init];
+        [business setName:[[object valueForKey:@"name"] description]];
+        [business setLati: [f numberFromString:[[object valueForKey:@"lat"] description]]];
+        [business setLongi: [f numberFromString:[[object valueForKey:@"long"] description]]];
+        
+        
+        [_mapView addAnnotation:business];
+        
+    }
+    
+    
+}
+
+- (void)loadBusinessesFromCloud
+{
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/getallbiz" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+
+        [self loadBusinesses];
+
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }];
+}
+
+
 
 
 @end

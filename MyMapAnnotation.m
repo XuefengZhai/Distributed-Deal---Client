@@ -7,41 +7,29 @@
 //
 
 #import "MyMapAnnotation.h"
-#import <AddressBook/AddressBook.h>
 
-@interface MyMapAnnotation ()
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *address;
-@property (nonatomic, assign) CLLocationCoordinate2D theCoordinate;
-@end
 
 @implementation MyMapAnnotation
+@synthesize lati;
+@synthesize longi;
+@synthesize name;
 
-- (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate {
-    if ((self = [super init])) {
-        if ([name isKindOfClass:[NSString class]]) {
-            self.name = name;
-        } else {
-            self.name = @"Unknown charge";
-        }
-        self.address = address;
-        self.theCoordinate = coordinate;
-        
-    }
-    return self;
+- (NSString *)title
+{
+    return self.name;
 }
 
-- (NSString *)title {
-    return _name;
+- (NSString *)subtitle
+{
+    return [NSString stringWithFormat:@""];
 }
 
-- (NSString *)subtitle {
-    return _address;
+- (CLLocationCoordinate2D)coordinate
+{
+    CLLocationCoordinate2D coordinate;
+    coordinate.latitude = [self.lati doubleValue];
+    coordinate.longitude = [self.longi doubleValue];
+    return coordinate;
 }
-
-- (CLLocationCoordinate2D)coordinate {
-    return _theCoordinate;
-}
-
 
 @end

@@ -10,9 +10,52 @@
 
 @implementation AppDelegate
 
+@synthesize managedObjectContext;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    
+    NSError *error = nil;
+    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"BusinessList" ofType:@"momd"]];
+    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    
+    // Initialize the Core Data stack
+    [managedObjectStore createPersistentStoreCoordinator];
+    
+    NSPersistentStore __unused *persistentStore = [managedObjectStore addInMemoryPersistentStore:&error];
+    NSAssert(persistentStore, @"Failed to add persistent store: %@", error);
+    
+    [managedObjectStore createManagedObjectContexts];
+    
+    // Set the default store shared instance
+    [RKManagedObjectStore setDefaultStore:managedObjectStore];
+    
+    // Configure the object manager
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://ec2-54-85-248-35.compute-1.amazonaws.com"]];
+    objectManager.managedObjectStore = managedObjectStore;
+    
+    [RKObjectManager setSharedManager:objectManager];
+    
+    RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"Business" inManagedObjectStore:managedObjectStore];
+    [entityMapping addAttributeMappingsFromDictionary:@{
+                                                        @"ID":              @"id",
+                                                        @"Name":            @"name",
+                                                        @"Description":            @"desc",
+                                                        @"IP":            @"ip",
+                                                        //@"street_no":       @"street_no",
+                                                        //@"street_name":     @"street_addr",
+                                                        //@"zip_code":        @"zip_code",
+                                                        @"Lat":             @"lat",
+                                                        @"Long":            @"long"}];
+    entityMapping.identificationAttributes = @[@"id"];
+    
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping pathPattern:@"/getallbiz" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    [objectManager addResponseDescriptor:responseDescriptor];
+    //[RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class]forMIMEType:@"text/html"];
+    self.managedObjectContext = managedObjectStore.mainQueueManagedObjectContext;
+    
     return YES;
 }
 							
@@ -42,5 +85,7 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 @end

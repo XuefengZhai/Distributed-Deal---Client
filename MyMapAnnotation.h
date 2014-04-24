@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface MyMapAnnotation : NSObject <MKAnnotation>
-
-- (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate;
+@interface MyMapAnnotation : NSObject  <MKAnnotation>
+@property (nonatomic,retain) NSNumber *lati;
+@property (nonatomic,retain) NSNumber *longi;
+@property (nonatomic, retain) NSString *name;
 
 @end

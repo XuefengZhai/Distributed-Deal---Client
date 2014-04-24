@@ -10,6 +10,8 @@
 		2F3790F318F0A5A1007B3422 /* LogIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3790F218F0A5A1007B3422 /* LogIn.m */; };
 		2F3C9E3F18F87E6D001160BF /* BusinessMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C9E3E18F87E6D001160BF /* BusinessMapViewController.m */; };
 		2F3C9E4618F890C6001160BF /* MyMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C9E4518F890C6001160BF /* MyMapAnnotation.m */; };
+		2F3C9E4818FB48AB001160BF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3C9E4718FB48AB001160BF /* CoreData.framework */; };
+		2F3C9E4B18FB49E7001160BF /* BusinessList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C9E4918FB49E7001160BF /* BusinessList.xcdatamodeld */; };
 		2F508CC918E6615F00C4EB02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508CC818E6615F00C4EB02 /* Foundation.framework */; };
 		2F508CCB18E6615F00C4EB02 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508CCA18E6615F00C4EB02 /* CoreGraphics.framework */; };
 		2F508CCD18E6615F00C4EB02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508CCC18E6615F00C4EB02 /* UIKit.framework */; };
@@ -18,7 +20,6 @@
 		2F508CD918E6615F00C4EB02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F508CD818E6615F00C4EB02 /* AppDelegate.m */; };
 		2F508CDC18E6615F00C4EB02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F508CDA18E6615F00C4EB02 /* Main.storyboard */; };
 		2F508CDF18E6615F00C4EB02 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F508CDE18E6615F00C4EB02 /* FirstViewController.m */; };
-		2F508CE418E6615F00C4EB02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F508CE318E6615F00C4EB02 /* Images.xcassets */; };
 		2F508CEB18E6615F00C4EB02 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508CEA18E6615F00C4EB02 /* XCTest.framework */; };
 		2F508CEC18E6615F00C4EB02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508CC818E6615F00C4EB02 /* Foundation.framework */; };
 		2F508CED18E6615F00C4EB02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508CCC18E6615F00C4EB02 /* UIKit.framework */; };
@@ -29,6 +30,7 @@
 		2F508D0518E6797D00C4EB02 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F508D0318E6797D00C4EB02 /* ImageIO.framework */; };
 		2FBBA3CB18F5F98000392DAD /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBBA3CA18F5F98000392DAD /* SignUpViewController.m */; };
 		2FBBA3D018F6078600392DAD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBBA3CF18F6078600392DAD /* CoreLocation.framework */; };
+		56CEF9B1F39F4FA2A51B7A7B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B6DF4A5D214DE78A6A4B0E /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		2F3C9E3E18F87E6D001160BF /* BusinessMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusinessMapViewController.m; path = ../BusinessMapViewController.m; sourceTree = "<group>"; };
 		2F3C9E4418F890C6001160BF /* MyMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyMapAnnotation.h; path = ../MyMapAnnotation.h; sourceTree = "<group>"; };
 		2F3C9E4518F890C6001160BF /* MyMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyMapAnnotation.m; path = ../MyMapAnnotation.m; sourceTree = "<group>"; };
+		2F3C9E4718FB48AB001160BF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2F3C9E4A18FB49E7001160BF /* BusinessList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusinessList.xcdatamodel; sourceTree = "<group>"; };
 		2F508CC518E6615F00C4EB02 /* DistributedD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistributedD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F508CC818E6615F00C4EB02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2F508CCA18E6615F00C4EB02 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,7 +65,6 @@
 		2F508CDB18E6615F00C4EB02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F508CDD18E6615F00C4EB02 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		2F508CDE18E6615F00C4EB02 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		2F508CE318E6615F00C4EB02 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2F508CE918E6615F00C4EB02 /* DistributedDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DistributedDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F508CEA18E6615F00C4EB02 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2F508CF218E6615F00C4EB02 /* DistributedDTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DistributedDTests-Info.plist"; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 		2FBBA3C918F5F98000392DAD /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		2FBBA3CA18F5F98000392DAD /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		2FBBA3CF18F6078600392DAD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		70F2FD7BA4AD42F3A85F51AF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		B8B6DF4A5D214DE78A6A4B0E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F3C9E4818FB48AB001160BF /* CoreData.framework in Frameworks */,
 				2FBBA3D018F6078600392DAD /* CoreLocation.framework in Frameworks */,
 				2F508D0418E6797D00C4EB02 /* CoreImage.framework in Frameworks */,
 				2F508D0518E6797D00C4EB02 /* ImageIO.framework in Frameworks */,
@@ -87,6 +93,7 @@
 				2F508CCB18E6615F00C4EB02 /* CoreGraphics.framework in Frameworks */,
 				2F508CCD18E6615F00C4EB02 /* UIKit.framework in Frameworks */,
 				2F508CC918E6615F00C4EB02 /* Foundation.framework in Frameworks */,
+				56CEF9B1F39F4FA2A51B7A7B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +117,7 @@
 				2F508CF018E6615F00C4EB02 /* DistributedDTests */,
 				2F508CC718E6615F00C4EB02 /* Frameworks */,
 				2F508CC618E6615F00C4EB02 /* Products */,
+				70F2FD7BA4AD42F3A85F51AF /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +133,7 @@
 		2F508CC718E6615F00C4EB02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F3C9E4718FB48AB001160BF /* CoreData.framework */,
 				2FBBA3CF18F6078600392DAD /* CoreLocation.framework */,
 				2F508D0218E6797D00C4EB02 /* CoreImage.framework */,
 				2F508D0318E6797D00C4EB02 /* ImageIO.framework */,
@@ -133,6 +142,7 @@
 				2F508CCA18E6615F00C4EB02 /* CoreGraphics.framework */,
 				2F508CCC18E6615F00C4EB02 /* UIKit.framework */,
 				2F508CEA18E6615F00C4EB02 /* XCTest.framework */,
+				B8B6DF4A5D214DE78A6A4B0E /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,6 +152,7 @@
 			children = (
 				2F3C9E4418F890C6001160BF /* MyMapAnnotation.h */,
 				2F3C9E4518F890C6001160BF /* MyMapAnnotation.m */,
+				2F3C9E4918FB49E7001160BF /* BusinessList.xcdatamodeld */,
 				2F3C9E3D18F87E6D001160BF /* BusinessMapViewController.h */,
 				2F3C9E3E18F87E6D001160BF /* BusinessMapViewController.m */,
 				2F508CD718E6615F00C4EB02 /* AppDelegate.h */,
@@ -153,7 +164,6 @@
 				2FBBA3CA18F5F98000392DAD /* SignUpViewController.m */,
 				2F508CDD18E6615F00C4EB02 /* FirstViewController.h */,
 				2F508CDE18E6615F00C4EB02 /* FirstViewController.m */,
-				2F508CE318E6615F00C4EB02 /* Images.xcassets */,
 				2F508CCF18E6615F00C4EB02 /* Supporting Files */,
 			);
 			path = DistributedD;
@@ -195,9 +205,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F508CFA18E6615F00C4EB02 /* Build configuration list for PBXNativeTarget "DistributedD" */;
 			buildPhases = (
+				517E108BB7004C12A9C158A0 /* Check Pods Manifest.lock */,
 				2F508CC118E6615F00C4EB02 /* Sources */,
 				2F508CC218E6615F00C4EB02 /* Frameworks */,
 				2F508CC318E6615F00C4EB02 /* Resources */,
+				41B0BB28A28F4A30A5404154 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,7 +276,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F508CE418E6615F00C4EB02 /* Images.xcassets in Resources */,
 				2F508CD318E6615F00C4EB02 /* InfoPlist.strings in Resources */,
 				2F508CDC18E6615F00C4EB02 /* Main.storyboard in Resources */,
 			);
@@ -280,12 +291,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		41B0BB28A28F4A30A5404154 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		517E108BB7004C12A9C158A0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2F508CC118E6615F00C4EB02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2F3C9E4618F890C6001160BF /* MyMapAnnotation.m in Sources */,
+				2F3C9E4B18FB49E7001160BF /* BusinessList.xcdatamodeld in Sources */,
 				2F3790F318F0A5A1007B3422 /* LogIn.m in Sources */,
 				2F3C9E3F18F87E6D001160BF /* BusinessMapViewController.m in Sources */,
 				2FBBA3CB18F5F98000392DAD /* SignUpViewController.m in Sources */,
@@ -413,6 +458,7 @@
 		};
 		2F508CFB18E6615F00C4EB02 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70F2FD7BA4AD42F3A85F51AF /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -426,6 +472,7 @@
 		};
 		2F508CFC18E6615F00C4EB02 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70F2FD7BA4AD42F3A85F51AF /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -508,6 +555,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2F3C9E4918FB49E7001160BF /* BusinessList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2F3C9E4A18FB49E7001160BF /* BusinessList.xcdatamodel */,
+			);
+			currentVersion = 2F3C9E4A18FB49E7001160BF /* BusinessList.xcdatamodel */;
+			path = BusinessList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2F508CBD18E6615F00C4EB02 /* Project object */;
 }
