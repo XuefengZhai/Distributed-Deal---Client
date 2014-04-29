@@ -7,6 +7,7 @@
 //
 
 #import "BusinessMapViewController.h"
+#import "BusininessDetailViewController.h"
 
 @interface BusinessMapViewController ()
 {
@@ -14,14 +15,13 @@
     CLLocationCoordinate2D currentLocation;
     CLLocation *curLocation;
     
-    
-    
 }
 
 @end
 
 @implementation BusinessMapViewController
 
+@synthesize mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,20 +48,28 @@
     /*
      *Init the map view to the current location;
      */
-    MKCoordinateSpan theSpan;
-    //The span of the map, the lower the more acurate
-    theSpan.latitudeDelta = 0.01;
-    theSpan.longitudeDelta = 0.01;
-    MKCoordinateRegion theRegion;
-    theRegion.center = [curLocation coordinate];
-    theRegion.span = theSpan;
-    [mapView setRegion:theRegion];
+//    MKCoordinateSpan theSpan;
+//    //The span of the map, the lower the more acurate
+//    theSpan.latitudeDelta = 0.01;
+//    theSpan.longitudeDelta = 0.01;
+//    MKCoordinateRegion theRegion;
+//    theRegion.center = [curLocation coordinate];
+//    theRegion.span = theSpan;
+//    [mapView setRegion:theRegion];
     
-    currentLocation.latitude = 42.44469;
-    currentLocation.longitude = -78.94886;
+//    MKCoordinateRegion region = self.mapView.region;
+//    region.center = curLocation;
+//    region.span.longitudeDelta /= ratioZoomMax; // Bigger the value, closer the map view
+//    region.span.latitudeDelta /= ratioZoomMax;
+//    [self.mapView setRegion:region animated:YES]; // Choose if you want animate or not
+
+    [mapView setCenterCoordinate:mapView.userLocation.location.coordinate animated:YES];
+
+    currentLocation.latitude = curLocation.coordinate.latitude;
+    currentLocation.longitude = curLocation.coordinate.longitude;
     
-    NSLog(@"loadBusinesses");
-    [self loadBusinessesFromCloud];
+    
+    
     
     
     
@@ -101,6 +109,7 @@
     
     
     NSLog(@"<%@,%@>",lat,lng);
+    [self loadBusinessesFromCloud];
 }
 
 
@@ -140,62 +149,63 @@
 
 */
 
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    NSLog(@"Hello!");
+    NSLog(@"%@",view.annotation.title);
+    DS_DDBusiness *chosenBiz = (DS_DDBusiness *)view.annotation;
+    
+    [[NSUserDefaults standardUserDefaults] setValue:chosenBiz.name forKey:@"biztitle"]; //pass value to next view
+    [[NSUserDefaults standardUserDefaults] setValue:chosenBiz.ip forKey:@"bizip"];
+    [[NSUserDefaults standardUserDefaults] setValue:chosenBiz.desc forKey:@"bizdesc"];
+    
+    
+    [self performSegueWithIdentifier:@"detail" sender:self];
+    
+}
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    if ([annotation isKindOfClass:[MKUserLocation class]])
-        return nil;
-    if ([annotation isKindOfClass:[MyMapAnnotation class]]) {
-        // try to dequeue an existing pin view first
         static NSString* MyLocation = @"MyLocation";
-        MKPinAnnotationView* pinView = (MKPinAnnotationView *)
         [mapView dequeueReusableAnnotationViewWithIdentifier:MyLocation];
-        if (!pinView)
-        {
-            // if an existing pin view was not available, create one
-            MKAnnotationView* customPinView = [[MKAnnotationView alloc]
+        MKPinAnnotationView* customPinView = [[MKPinAnnotationView alloc]
                                                 initWithAnnotation:annotation reuseIdentifier:MyLocation];
-            customPinView.canShowCallout = YES;  //很重要，运行点击弹出标签
-            UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-            [rightButton addTarget:self
-                        action:@selector (toDetail)
-                        forControlEvents:UIControlEventTouchUpInside];
-            customPinView.rightCalloutAccessoryView = rightButton;
-            customPinView.opaque = YES;
-            return customPinView;
-        }
-        else
-        {
-            pinView.annotation = annotation;
-        }
-        return pinView;
+    if ([annotation isKindOfClass:[MKUserLocation class]]){
+        return nil;
+    }else{
+    
+        customPinView.canShowCallout = YES;
+        // Create a UIButton object to add on the
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [rightButton setTitle:annotation.title forState:UIControlStateNormal];
+    [customPinView setRightCalloutAccessoryView:rightButton];
+
+    return customPinView;
     }
-    return nil;
 }
 
 
 
--(void)toDetail
-{
-    [self performSegueWithIdentifier:@"detail" sender:self];
-}
+
 
 
 - (void)loadBusinesses
 {
     
+
     NSManagedObjectContext *context = ((AppDelegate*)([[UIApplication sharedApplication] delegate])).managedObjectContext;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+
+    
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Business" inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DS_DDBusiness" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"b_id" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -204,23 +214,32 @@
     
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
-    for(NSManagedObject *object in businesses){
-        MyMapAnnotation *business = [[MyMapAnnotation alloc] init];
-        [business setName:[[object valueForKey:@"name"] description]];
-        [business setLati: [f numberFromString:[[object valueForKey:@"lat"] description]]];
-        [business setLongi: [f numberFromString:[[object valueForKey:@"long"] description]]];
+    for(DS_DDBusiness *business in businesses){
+        //DS_DDBusiness *business = [[DS_DDBusiness alloc] init];
         
         
-        [_mapView addAnnotation:business];
+        
+//        [business setName:[[object valueForKey:@"name"] description]];
+//        [business setLat: [f numberFromString:[[object valueForKey:@"lat"] description]]];
+//        [business setLongtd: [f numberFromString:[[object valueForKey:@"longtd"] description]]];
+        
+        [mapView addAnnotation:business];
         
     }
+    NSLog(@"loadBusinesses");
     
     
 }
 
 - (void)loadBusinessesFromCloud
 {
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/getallbiz" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    NSLog(@"Print again!!<%@,%@>",lat,lng);
+
+    
+    NSString *locationString = [NSString stringWithFormat:@"%@+%@",lat,lng];
+    NSDictionary *location = @{ @"Location" : locationString};
+
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/getallbiz" parameters:location success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
         [self loadBusinesses];
 

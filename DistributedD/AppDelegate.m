@@ -16,7 +16,7 @@
 {
     
     NSError *error = nil;
-    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"BusinessList" ofType:@"momd"]];
+    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"DS_DD1" ofType:@"momd"]];
     NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
     RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
     
@@ -37,9 +37,9 @@
     
     [RKObjectManager setSharedManager:objectManager];
     
-    RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"Business" inManagedObjectStore:managedObjectStore];
+    RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"DS_DDBusiness" inManagedObjectStore:managedObjectStore];
     [entityMapping addAttributeMappingsFromDictionary:@{
-                                                        @"ID":              @"id",
+                                                        @"ID":              @"b_id",
                                                         @"Name":            @"name",
                                                         @"Description":            @"desc",
                                                         @"IP":            @"ip",
@@ -47,14 +47,14 @@
                                                         //@"street_name":     @"street_addr",
                                                         //@"zip_code":        @"zip_code",
                                                         @"Lat":             @"lat",
-                                                        @"Long":            @"long"}];
-    entityMapping.identificationAttributes = @[@"id"];
+                                                        @"Long":            @"longtd"}];
+    entityMapping.identificationAttributes = @[@"b_id"];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping pathPattern:@"/getallbiz" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
     [objectManager addResponseDescriptor:responseDescriptor];
+    managedObjectContext = managedObjectStore.mainQueueManagedObjectContext;
     //[RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class]forMIMEType:@"text/html"];
-    self.managedObjectContext = managedObjectStore.mainQueueManagedObjectContext;
     
     return YES;
 }

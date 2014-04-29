@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DS_DDBusiness" representedClassName="DS_DDBusiness">
+        <attribute name="b_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longtd" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="deals" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DS_DDDeal" inverseName="business" inverseEntity="DS_DDDeal" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="DS_DDCustomerGroup" inverseName="business" inverseEntity="DS_DDCustomerGroup" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <entity name="DS_DDCustomer" representedClassName="DS_DDCustomer" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="c_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="custom_max" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sub_level" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="DS_DDCustomerGroup" inverseName="customers" inverseEntity="DS_DDCustomerGroup" syncable="YES"/>
+    </entity>
+    <entity name="DS_DDCustomerGroup" representedClassName="DS_DDCustomerGroup" syncable="YES">
+        <relationship name="business" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="DS_DDBusiness" inverseName="groups" inverseEntity="DS_DDBusiness" syncable="YES"/>
+        <relationship name="customers" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="DS_DDCustomer" inverseName="groups" inverseEntity="DS_DDCustomer" syncable="YES"/>
+    </entity>
+    <entity name="DS_DDDeal" representedClassName="DS_DDDeal" syncable="YES">
+        <attribute name="d_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="end_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="max_cust" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="start_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="business" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DS_DDBusiness" inverseName="deals" inverseEntity="DS_DDBusiness" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DS_DDBusiness" positionX="-63" positionY="27" width="128" height="163"/>
+        <element name="DS_DDCustomerGroup" positionX="-54" positionY="90" width="128" height="73"/>
+        <element name="DS_DDDeal" positionX="-36" positionY="99" width="128" height="178"/>
+        <element name="DS_DDCustomer" positionX="-18" positionY="108" width="128" height="148"/>
+    </elements>
+</model>

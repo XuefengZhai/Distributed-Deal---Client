@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "MyMapAnnotation.h"
 #import "AppDelegate.h"
+#import "DS_DDBusiness.h"
 
 
 @interface BusinessMapViewController : UIViewController <MKMapViewDelegate> {

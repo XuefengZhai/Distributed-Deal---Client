@@ -71,15 +71,37 @@
 
     NSHTTPURLResponse *response = nil;
 
-    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-    
-    NSLog(@"Code:%d",[response statusCode]);
+    NSData *responseData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    NSString* responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"responseString%@",responseString);
+
+    NSLog(@"signin::::%@",urlFinal);
+
+    NSLog(@"SigninCode:%d",[response statusCode]);
     
     if ([response statusCode] == 200)
     {
         NSLog(@"!!!!!!!!!");
         NSLog(@"ButtonPressed");
         NSLog(@"%@",urlFinal);
+        
+        NSArray *array = [responseString componentsSeparatedByString:@" "];
+        NSLog(@"array:%@",array);
+        
+        NSString *userName;
+        NSString *userAge;
+        NSString *userGender;
+        userName = [array objectAtIndex:0];
+        userAge = [array objectAtIndex:1];
+        userGender = [array objectAtIndex:1];
+        
+        
+
+        [[NSUserDefaults standardUserDefaults] setValue:userName forKey:@"userName"]; //pass value tofuture use
+        [[NSUserDefaults standardUserDefaults] setValue:userAge forKey:@"userAge"];
+        [[NSUserDefaults standardUserDefaults] setValue:userGender forKey:@"userGender"];
+        [[NSUserDefaults standardUserDefaults] setValue:email.text forKey:@"userEmail"];
+        
         [self performSegueWithIdentifier:@"signIn" sender:self]; //Change the seque identifier
     }
     else if([response statusCode] == 404)

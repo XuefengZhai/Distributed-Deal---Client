@@ -18,7 +18,7 @@
 
 @implementation SignUpViewController
 
-@synthesize email,psw,name,age;
+@synthesize email,psw,name,age,gender;
 @synthesize confirm;
 
 
@@ -59,6 +59,11 @@
     [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }// Hide keyboard when touch the screen
 
+- (IBAction)genderTextField_didEndOnExit:(id)sender {
+    [sender resignFirstResponder];
+
+}
+
 
 - (IBAction)emailTextField_DidEndOnExit:(id)sender {
     [self.psw becomeFirstResponder];
@@ -74,8 +79,7 @@
 
 
 - (IBAction)ageTextField_DidEndOnExit:(id)sender {
-    [sender resignFirstResponder];
-    [self.confirm sendActionsForControlEvents:UIControlEventTouchUpInside];
+    [self.gender becomeFirstResponder];
     
 }
 
@@ -86,9 +90,17 @@
     NSString *pswText = psw.text;
     NSString *nameText = name.text;
     NSString *ageText = age.text;
+    NSString *genderText;
+    if([gender.text isEqualToString:@"Male"]){
+        genderText = @"M";
+    }
+    else
+    {
+        genderText = @"F";
+    }
     NSString *urlFinal = [NSString stringWithFormat:
-                          @"%@Email=%@&Psw=%@&Name=%@&Age=%@&Sex=M&Location=%@+%@",
-                          urlBaseString,emailText,pswText,nameText,ageText,lat,lng];
+                          @"%@Email=%@&Psw=%@&Name=%@&Age=%@&Sex=%@&Location=%@+%@",
+                          urlBaseString,emailText,pswText,nameText,ageText,genderText,lat,lng];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:urlFinal]];

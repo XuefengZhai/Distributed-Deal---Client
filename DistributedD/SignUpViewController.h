@@ -18,6 +18,7 @@
     IBOutlet UITextField *psw;
     IBOutlet UITextField *age;
     IBOutlet UIButton *confirm;
+    IBOutlet UITextField *gender;
     CLLocationManager *lm;
 }
 
@@ -27,6 +28,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *psw;
 @property (nonatomic, retain) IBOutlet UITextField *name;
 @property (nonatomic, retain) IBOutlet UITextField *age;
+@property (nonatomic, retain) IBOutlet UITextField *gender;
 
 - (IBAction)emailTextField_DidEndOnExit:(id)sender;
 - (IBAction)pswTextField_DidEndOnExit:(id)sender;
@@ -34,6 +36,7 @@
 - (IBAction)ageTextField_DidEndOnExit:(id)sender;
 - (IBAction)confirmButton:(id)sender;
 - (IBAction)View_TouchDown:(id)sender;
+
 
 - (void) locationManager: (CLLocationManager *) manager
      didUpdateToLocation: (CLLocation *) newLocation
