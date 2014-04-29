@@ -103,8 +103,7 @@
     NSString* userGender = [[NSUserDefaults standardUserDefaults] objectForKey:@"userGender"];
     NSLog(@"The userGender is:%@",userGender);
     
-    NSString* userEmail = [[NSUserD#0	0x00004a21 in -[BusinessMapViewController loadBusinessesFromCloud] at /Users/SafenZhai/Desktop/DistributedD/BusinessMapViewController.m:236
-efaults standardUserDefaults] objectForKey:@"userEmail"];
+    NSString* userEmail = [[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"];
     NSLog(@"The userEmail is:%@",userEmail);
 
 
