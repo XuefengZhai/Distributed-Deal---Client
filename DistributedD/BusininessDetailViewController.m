@@ -23,6 +23,7 @@
 @synthesize nameLabel;
 @synthesize descLabel;
 @synthesize subscribe;
+@synthesize deal;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -54,8 +55,8 @@
     //128.237.213.52
     //127.0.0.1
     
-    
-    bizip=@"128.237.210.143";
+    //delete later!!!! just to set ip!!!!
+    bizip=@"128.237.218.41";
     
     
     NSLog(@"Starting...");
@@ -122,6 +123,25 @@
 
 }
 
+- (IBAction)deal:(id)sender {
+    
+    NSLog(@"Button is working...");
+    NSString *requestStr = [NSString stringWithFormat:@"alldeals"];
+    NSLog(@"sbscribeString:::%@",requestStr);
+    NSData *requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding];
+    [socket writeData:requestData withTimeout:-1.0 tag:0];
+    NSLog(@"Sent...");
+    if (socket.isConnected) {
+        NSLog(@"==============");
+    }
+    
+    [self startRead];
+    
+
+    
+    
+}
+
 
 -(void)startRead {
 	//[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startRead) userInfo:nil repeats:YES];
@@ -161,6 +181,45 @@
         [wrongAlert show];
 
     }
+    else{
+        //NSArray *array = [response componentsSeparatedByString:@","];
+        NSArray *array = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"11", @"22", @"33", @"44",nil];
+        
+        NSMutableArray *alldealnames= [[NSMutableArray alloc] init];;
+        NSMutableArray *alldealdesc=[[NSMutableArray alloc] init];;
+        NSMutableArray *alldealstartdate=[[NSMutableArray alloc] init];;
+        NSMutableArray *alldealenddate=[[NSMutableArray alloc] init];;
+        
+        for(int i=0;i<array.count;i++)
+        {
+            NSLog(@"object1:%@",[array objectAtIndex:i]);
+            [alldealnames addObject:[array objectAtIndex:i]];
+            i++;
+            NSLog(@"object2:%@",[array objectAtIndex:i]);
+            [alldealdesc addObject:[array objectAtIndex:i]];
+            i++;
+            NSLog(@"object3:%@",[array objectAtIndex:i]);
+            [alldealstartdate addObject:[array objectAtIndex:i]];
+            i++;
+            NSLog(@"object4:%@",[array objectAtIndex:i]);
+            [alldealenddate addObject:[array objectAtIndex:i]];
+        }
+        
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults] setValue:alldealnames forKey:@"alldealnames"];
+        [[NSUserDefaults standardUserDefaults] setValue:alldealdesc forKey:@"alldealdesc"];
+        [[NSUserDefaults standardUserDefaults] setValue:alldealstartdate forKey:@"alldealstartdate"];
+        [[NSUserDefaults standardUserDefaults] setValue:alldealenddate forKey:@"alldealenddate"];
+        
+        NSLog(@"alldealnames:%@",array);
+        NSLog(@"alldealnames:%@",alldealnames);
+        NSLog(@"alldealdesc:%@",alldealdesc);
+        NSLog(@"alldealstartdate:%@",alldealstartdate);
+        NSLog(@"alldealenddate:%@",alldealenddate);
+    }
+    
 }
 
 - (void)socketDidDisconnect:(AsyncSocket *)sock withError:(NSError *)err

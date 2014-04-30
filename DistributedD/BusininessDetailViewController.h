@@ -12,7 +12,6 @@
 
 @interface BusininessDetailViewController : UIViewController<AsyncSocketDelegate>{
     AsyncSocket *socket;
-    AsyncSocket *socketServer;
     NSString *bizname;
     NSString *bizip;
     NSString *bizdesc;
@@ -21,6 +20,7 @@
      IBOutlet UILabel *descLabel;
      IBOutlet UIButton *read;
     
+     IBOutlet UIButton *deal;
      IBOutlet UIButton *send;
      IBOutlet UIButton *subscribe;
 }
@@ -32,11 +32,13 @@
 @property (nonatomic, retain) IBOutlet UIButton *subscribe;
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *descLabel;
+@property (nonatomic, retain) IBOutlet UIButton *deal;
 
 -(void)startRead;
 - (IBAction)read:(id)sender;
 - (IBAction)send:(id)sender;
 - (IBAction)subscribe:(id)sender;
+- (IBAction)deal:(id)sender;
 
 
 @end

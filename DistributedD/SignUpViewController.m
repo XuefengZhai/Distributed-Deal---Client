@@ -85,7 +85,7 @@
 
 - (IBAction)confirmButton:(id)sender{
     
-    NSString *urlBaseString = @"http://ec2-54-85-248-35.compute-1.amazonaws.com:8000/csignup?";
+    NSString *urlBaseString = @"http://ec2-54-86-125-98.compute-1.amazonaws.com:8000/csignup?";
     NSString *emailText =email.text;
     NSString *pswText = psw.text;
     NSString *nameText = name.text;

@@ -32,7 +32,7 @@
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
     
     // Configure the object manager
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://ec2-54-85-248-35.compute-1.amazonaws.com"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://ec2-54-86-125-98.compute-1.amazonaws.com"]];
     objectManager.managedObjectStore = managedObjectStore;
     
     [RKObjectManager setSharedManager:objectManager];
