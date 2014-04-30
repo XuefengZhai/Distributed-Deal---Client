@@ -93,7 +93,6 @@
         <!--View Controller - McDolnads-->
         <scene sceneID="Ssp-NX-9SW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tIP-3O-wRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="bf5-vq-TXu" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cfb-c6-3Vf"/>
@@ -139,13 +138,13 @@
                         <barButtonItem key="backBarButtonItem" title="Subscription" id="rSP-lw-POV"/>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tIP-3O-wRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2059" y="-446"/>
         </scene>
         <!--View Controller - Deals-->
         <scene sceneID="P1o-1P-gfj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ba8-qm-9ZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="4v7-4f-1SZ" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v0j-x0-lIE"/>
@@ -167,6 +166,7 @@
                         <barButtonItem key="backBarButtonItem" title="McDolnads" id="LnT-Mf-7DQ"/>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ba8-qm-9ZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2469" y="-451"/>
         </scene>
@@ -403,10 +403,10 @@
             </objects>
             <point key="canvasLocation" x="2233" y="894"/>
         </scene>
-        <!--View Controller - Deal Details-->
+        <!--Biz Deal Info View Controller - Deal Details-->
         <scene sceneID="CiM-mn-aFk">
             <objects>
-                <viewController id="Of4-4T-yca" sceneMemberID="viewController">
+                <viewController id="Of4-4T-yca" customClass="BizDealInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="04n-6o-5Aa"/>
                         <viewControllerLayoutGuide type="bottom" id="Zni-xb-dMt"/>
@@ -416,32 +416,32 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4X-xP-kN5">
-                                <rect key="frame" x="50" y="132" width="51" height="21"/>
+                                <rect key="frame" x="15" y="97" width="51" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1H-pU-gHE">
-                                <rect key="frame" x="8" y="170" width="93" height="21"/>
+                                <rect key="frame" x="14" y="170" width="93" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFb-a2-NgF">
-                                <rect key="frame" x="25" y="283" width="76" height="21"/>
+                                <rect key="frame" x="17" y="329" width="76" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRQ-dq-CcY">
-                                <rect key="frame" x="18" y="244" width="83" height="21"/>
+                                <rect key="frame" x="15" y="286" width="83" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlX-n9-Wxz">
-                                <rect key="frame" x="99" y="398" width="107" height="30"/>
+                                <rect key="frame" x="99" y="413" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add to My Deal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -451,6 +451,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Deal Details" id="8xk-BP-pGq"/>
+                    <connections>
+                        <outlet property="descLabel" destination="x1H-pU-gHE" id="eJ1-50-0Qa"/>
+                        <outlet property="eDateLabel" destination="ZFb-a2-NgF" id="Ekk-i7-wvB"/>
+                        <outlet property="nameLabel" destination="n4X-xP-kN5" id="QYR-Xp-BzZ"/>
+                        <outlet property="sDateLabel" destination="BRQ-dq-CcY" id="SkJ-L4-Efn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iW4-I2-UWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -502,17 +508,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fXZ-Gc-rtO">
-                                <rect key="frame" x="0.0" y="111" width="320" height="405"/>
+                                <rect key="frame" x="0.0" y="66" width="356" height="450"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="QUy-BD-bpt" id="RYK-Ku-WTX"/>
                                 </connections>
                             </mapView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aGp-5E-F8B">
-                                <rect key="frame" x="0.0" y="67" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -960,7 +961,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Xla-dl-E8R"/>
+        <segue reference="ZT3-Wc-HCP"/>
         <segue reference="zym-Cr-ibi"/>
     </inferredMetricsTieBreakers>
 </document>

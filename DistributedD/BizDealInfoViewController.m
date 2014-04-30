@@ -8,6 +8,10 @@
 
 #import "BizDealInfoViewController.h"
 
+@interface BizDealInfoViewController ()
+
+@end
+
 @interface BizDealInfoViewController (){
     NSArray *nameArray;
     NSArray *descArray;
@@ -17,9 +21,15 @@
     
 }
 
+
 @end
 
 @implementation BizDealInfoViewController
+
+@synthesize nameLabel;
+@synthesize descLabel;
+@synthesize sDateLabel;
+@synthesize eDateLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,8 +57,16 @@
     NSLog(@"sdate:%@",startdateArray);
     NSLog(@"edate:%@",enddateArray);
     NSLog(@"%@",selectedDeal);
-
     
+    NSInteger sdInteger = [selectedDeal integerValue];
+    
+    
+    //需要添加上name：desc：startdate：enddate
+    [nameLabel setText:[nameArray objectAtIndex:sdInteger]];
+    [descLabel setText:[descArray objectAtIndex:sdInteger]];
+    [sDateLabel setText:[startdateArray objectAtIndex:sdInteger]];
+    [eDateLabel setText:[enddateArray objectAtIndex:sdInteger]];
+
     
     
 }
@@ -60,14 +78,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
