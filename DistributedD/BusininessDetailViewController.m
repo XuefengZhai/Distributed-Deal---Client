@@ -181,6 +181,13 @@
         [wrongAlert show];
 
     }
+//    else if(response == (id)[NSNull null] || response.length == 0  ){
+//        UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[NSString stringWithFormat:@"Businiss can't subscribe"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        
+//        [wrongAlert show];
+//
+//        
+//    }
     else{
         //NSArray *array = [response componentsSeparatedByString:@","];
         NSArray *array = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"11", @"22", @"33", @"44",nil];

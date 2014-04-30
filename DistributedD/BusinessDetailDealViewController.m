@@ -10,6 +10,8 @@
 
 @interface BusinessDetailDealViewController (){
     NSArray *tableData;
+    NSArray *tableDesc;
+    
 
 }
 
@@ -29,7 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tableData = [[NSUserDefaults standardUserDefaults] objectForKey:@"dealnames"];
+    tableData = [[NSUserDefaults standardUserDefaults] objectForKey:@"alldealnames"];
+    tableDesc = [[NSUserDefaults standardUserDefaults] objectForKey:@"alldealdesc"];
 
     
     // Do any additional setup after loading the view.
@@ -56,7 +59,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
     }
     cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = @"testtest";
+    cell.detailTextLabel.text = [tableDesc objectAtIndex:indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     //[cell accessoryView ce]
     
@@ -68,6 +71,8 @@
 {
     NSInteger row = indexPath.row;
     NSLog(@"row:%i",row);
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:indexPath.row] forKey:@"selectedalldeals"];
+
     [self performSegueWithIdentifier:@"BusinessDealDetail" sender:self]; //Change the seque identifier
 }
 
