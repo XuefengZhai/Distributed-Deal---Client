@@ -14,10 +14,13 @@
 
 @implementation DealViewController
 {
-    NSArray *dealname;
-    NSArray *dealdesc;
-    NSArray *dealsdate;
-    NSArray *dealedate;
+    NSMutableArray *dealname;
+    NSMutableArray *dealdesc;
+    NSMutableArray *dealsdate;
+    NSMutableArray *dealedate;
+    NSMutableArray *dealprice;
+    NSMutableArray *dealna;
+    NSMutableArray *dealtype;
 
 }
 
@@ -35,15 +38,33 @@
     [super viewDidLoad];
     
     
-    dealname = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", nil];
-    dealdesc =[NSArray arrayWithObjects:@"Hello", @"Bye", @"Ahha", @"Noo",nil];
-    dealsdate = [NSArray arrayWithObjects:@"1-1", @"2-2", @"3-3", @"4-4",nil];
-    dealedate =[NSArray arrayWithObjects:@"5-1", @"6-2", @"7-3", @"8-4",nil];
+    dealname= [[NSMutableArray alloc] init];
+    dealdesc= [[NSMutableArray alloc] init];
+    dealsdate= [[NSMutableArray alloc] init];
+    dealedate= [[NSMutableArray alloc] init];
+    dealprice= [[NSMutableArray alloc] init];
+    dealna= [[NSMutableArray alloc] init];
+    dealtype= [[NSMutableArray alloc] init];
+
     
-    [[NSUserDefaults standardUserDefaults] setValue:dealname forKey:@"selectdealname"];
-    [[NSUserDefaults standardUserDefaults] setValue:dealdesc forKey:@"selectdealdesc"];
-    [[NSUserDefaults standardUserDefaults] setValue:dealsdate forKey:@"selectdealsdate"];
-    [[NSUserDefaults standardUserDefaults] setValue:dealedate forKey:@"selectdealedate"];
+    NSManagedObjectContext *managedObjectContext = ((AppDelegate*)([[UIApplication sharedApplication] delegate])).managedObjectContext;
+    
+    // Get all the deals, and find the max id
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DS_DDDeal" inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    NSArray *array = [managedObjectContext executeFetchRequest:request error:nil];
+    
+    for(DS_DDDeal *deal in array){
+        [dealname addObject:deal.title];
+        [dealtype addObject:deal.type];
+        [dealprice addObject:deal.price];
+        [dealsdate addObject:deal.start_date];
+        [dealedate addObject:deal.end_date];
+        [dealna addObject:deal.max_cust];
+        [dealdesc addObject:deal.description];
+    }
+    
     
     
     // Do any additional setup after loading the view.
@@ -82,6 +103,16 @@
 {
     NSInteger row = indexPath.row;
     NSLog(@"row:%i",row);
+    
+    [[NSUserDefaults standardUserDefaults] setValue:dealname forKey:@"selectdealname"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealdesc forKey:@"selectdealdesc"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealsdate forKey:@"selectdealsdate"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealedate forKey:@"selectdealedate"];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:dealtype forKey:@"selecteddealtype"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealprice forKey:@"selecteddealprice"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealna forKey:@"selecteddealna"];
+    
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:indexPath.row] forKey:@"selecteddeal"];
     [self performSegueWithIdentifier:@"dealdetail" sender:self]; //Change the seque identifier
 }

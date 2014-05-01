@@ -7,6 +7,7 @@
 
 #import "BusininessDetailViewController.h"
 #import "AsyncSocket.h"
+#import "AppDelegate.h"
 
 @interface BusininessDetailViewController (){
 }
@@ -56,7 +57,7 @@
     //127.0.0.1
     
     //delete later!!!! just to set ip!!!!
-    bizip=@"128.237.216.25";
+//    bizip=@"128.237.216.25";
     
     
     NSLog(@"Starting...");
@@ -107,10 +108,11 @@
     NSString* userEmail = [[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"];
     NSLog(@"The userEmail is:%@",userEmail);
 
-
+    NSString *deviceId = [ApigeeDataClient getUniqueDeviceID];
+    
     NSLog(@"Button is working...");
-    NSString *requestStr = [NSString stringWithFormat:@"subscribe,%@,%@,1,%@,%@,1",
-                            userAge, userEmail, userGender, userName];
+    NSString *requestStr = [NSString stringWithFormat:@"subscribe,%@,%@,1,%@,%@,1,%@",
+                            userAge, userEmail, userGender, userName, deviceId];
     NSLog(@"sbscribeString:::%@",requestStr);
     NSData *requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding];
     [socket writeData:requestData withTimeout:-1.0 tag:0];
@@ -232,9 +234,9 @@
     NSLog(@"Respose::%@",response);
     
     if ([response isEqualToString:@"OK"]) {
-        UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Success" message:[NSString stringWithFormat:@"Businiss Subscribed"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        
-        [wrongAlert show];
+//        UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Success" message:[NSString stringWithFormat:@"Businiss Subscribed"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        
+//        [wrongAlert show];
 
     }
 //    else if(response == (id)[NSNull null] || response.length == 0  ){

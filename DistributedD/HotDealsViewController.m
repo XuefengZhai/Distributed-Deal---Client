@@ -17,6 +17,9 @@
     NSMutableArray *dealdesc;
     NSMutableArray *dealsdate;
     NSMutableArray *dealedate;
+    NSMutableArray *dealtype;
+    NSMutableArray *dealna;
+    NSMutableArray *dealprice;
     
 }
 
@@ -56,6 +59,10 @@
     dealdesc = [[NSMutableArray alloc] init];
     dealsdate =[[NSMutableArray alloc] init];
     dealedate =[[NSMutableArray alloc] init];
+    dealtype =[[NSMutableArray alloc] init];
+    dealna =[[NSMutableArray alloc] init];
+    dealprice =[[NSMutableArray alloc] init];
+    
     if ([response statusCode] == 200)
     {
         NSLog(@"!!!!!!!!!");
@@ -69,18 +76,27 @@
         NSString *dealdescS;
         NSString *dealsdateS;
         NSString *dealedateS;
+        NSString *dealtypeS;
+        NSString *dealpriceS;
+        NSString *dealnaS;
 
         
         for(int i=0;i<[array count];i++){
             
             dealnameS =[array objectAtIndex:i];
-            NSLog(@"dealnameS:%@",dealnameS);
-
             [dealname addObject:dealnameS];
             i++;
             
             dealdescS =[array objectAtIndex:i];
             [dealdesc addObject:dealdescS];
+            i++;
+            
+            dealtypeS =[array objectAtIndex:i];
+            [dealtype addObject:dealtypeS];
+            i++;
+            
+            dealnaS =[array objectAtIndex:i];
+            [dealna addObject:dealnaS];
             i++;
             
             dealsdateS =[array objectAtIndex:i];
@@ -89,13 +105,13 @@
             
             dealedateS =[array objectAtIndex:i];
             [dealedate addObject:dealedateS];
+            i++;
+            
+            dealpriceS =[array objectAtIndex:i];
+            [dealprice addObject:dealpriceS];
+            
         }
-        
-        NSLog(@"namearray:%@",dealname);
-        NSLog(@"descarray:%@",dealdesc);
-        NSLog(@"sdatearray:%@",dealsdate);
-        NSLog(@"edatearray:%@",dealedate);
-        
+                
         
     }
 
@@ -105,7 +121,9 @@
     [[NSUserDefaults standardUserDefaults] setValue:dealdesc forKey:@"selectdealdesc"];
     [[NSUserDefaults standardUserDefaults] setValue:dealsdate forKey:@"selectdealsdate"];
     [[NSUserDefaults standardUserDefaults] setValue:dealedate forKey:@"selectdealedate"];
-
+    [[NSUserDefaults standardUserDefaults] setValue:dealtype forKey:@"selecteddealtype"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealprice forKey:@"selecteddealprice"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealna forKey:@"selecteddealna"];
     
     // Do any additional setup after loading the view.
 }

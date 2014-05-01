@@ -13,8 +13,11 @@
     NSArray *descArray;
     NSArray *startdateArray;
     NSArray *enddateArray;
+    NSArray *typeArray;
+    NSArray *priceArray;
+    NSArray *naArray;
     NSNumber *selectedDeal;
-
+    NSString *displayname;
 }
 
 @end
@@ -24,6 +27,9 @@
 @synthesize descLabel;
 @synthesize sdateLabel;
 @synthesize edateLabel;
+@synthesize typeLabel;
+@synthesize priceLabel;
+@synthesize anLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,6 +50,11 @@
     startdateArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectdealsdate"];
     enddateArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectdealedate"];
     selectedDeal = [[NSUserDefaults standardUserDefaults] objectForKey:@"selecteddeal"];
+    typeArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"selecteddealtype"];
+    priceArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"selecteddealprice"];
+    naArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"selecteddealna"];
+
+    
     
     NSLog(@"names:%@",nameArray);
     NSLog(@"desc:%@",descArray);
@@ -53,16 +64,24 @@
     
     NSInteger sdInteger = [selectedDeal integerValue];
     
-    NSString *displayname = [[NSString alloc] initWithFormat:@"Name: %@", [nameArray objectAtIndex:sdInteger]];
-    NSString *displaydesc = [[NSString alloc] initWithFormat:@"Description: %@", [descArray objectAtIndex:sdInteger]];
-    NSString *displaysdate = [[NSString alloc] initWithFormat:@"Start Date: %@", [startdateArray objectAtIndex:sdInteger]];
-    NSString *displayedate = [[NSString alloc] initWithFormat:@"End Date: %@", [enddateArray objectAtIndex:sdInteger]];
+     displayname = [[NSString alloc] initWithFormat:@"%@", [nameArray objectAtIndex:sdInteger]];
+    NSString *displaydesc = [[NSString alloc] initWithFormat:@"%@", [descArray objectAtIndex:sdInteger]];
+    NSString *displaysdate = [[NSString alloc] initWithFormat:@"%@", [startdateArray objectAtIndex:sdInteger]];
+    NSString *displayedate = [[NSString alloc] initWithFormat:@"%@", [enddateArray objectAtIndex:sdInteger]];
+    NSString *displayprice = [[NSString alloc] initWithFormat:@"%@", [priceArray objectAtIndex:sdInteger]];
+    NSString *displayna = [[NSString alloc] initWithFormat:@"%@", [naArray objectAtIndex:sdInteger]];
+    NSString *displaytype = [[NSString alloc] initWithFormat:@"%@", [typeArray objectAtIndex:sdInteger]];
+
+    
     
     
     [nameLabel setText:displayname];
     [descLabel setText:displaydesc];
     [sdateLabel setText:displaysdate];
     [edateLabel setText:displayedate];
+    [priceLabel setText:displayprice];
+    [anLabel setText:displayna];
+    [typeLabel setText:displaytype];
 
 
 
@@ -85,4 +104,27 @@
 }
 */
 
+- (IBAction)redeem:(id)sender {
+    
+    
+    NSManagedObjectContext *managedObjectContext = ((AppDelegate*)([[UIApplication sharedApplication] delegate])).managedObjectContext;
+    
+    // Get all the deals, and find the max id
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DS_DDDeal" inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    NSArray *array = [managedObjectContext executeFetchRequest:request error:nil];
+    
+    for(DS_DDDeal *deal in array){
+        if([[deal title]isEqualToString:displayname]){
+            [managedObjectContext deleteObject:deal];
+            
+            UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Sucess" message:[NSString stringWithFormat:@"Deal Redeemed"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            
+            [wrongAlert show];
+            
+        }
+    }
+
+}
 @end

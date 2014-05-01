@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DS_DDDeal.h"
+#import "AppDelegate.h"
 
 @interface DealViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 

@@ -76,14 +76,14 @@
     
     NSInteger sdInteger = [selectedDeal integerValue];
     
-    displayname = [[NSString alloc] initWithFormat:@"Name: %@", [nameArray objectAtIndex:sdInteger]];
-    displaydesc = [[NSString alloc] initWithFormat:@"Description: %@", [descArray objectAtIndex:sdInteger]];
-    displaysdate = [[NSString alloc] initWithFormat:@"Start Date: %@", [startdateArray objectAtIndex:sdInteger]];
-    displayedate = [[NSString alloc] initWithFormat:@"End Date: %@", [enddateArray objectAtIndex:sdInteger]];
+    displayname = [[NSString alloc] initWithFormat:@"%@", [nameArray objectAtIndex:sdInteger]];
+    displaydesc = [[NSString alloc] initWithFormat:@"%@", [descArray objectAtIndex:sdInteger]];
+    displaysdate = [[NSString alloc] initWithFormat:@"%@", [startdateArray objectAtIndex:sdInteger]];
+    displayedate = [[NSString alloc] initWithFormat:@"%@", [enddateArray objectAtIndex:sdInteger]];
     
-    displaytype = [[NSString alloc] initWithFormat:@"Type: %@", [typeArray objectAtIndex:sdInteger]];
-    displayprice = [[NSString alloc] initWithFormat:@"Price: %@", [priceArray objectAtIndex:sdInteger]];
-    displayan = [[NSString alloc] initWithFormat:@"Available Number: %@", [maxArray objectAtIndex:sdInteger]];
+    displaytype = [[NSString alloc] initWithFormat:@"%@", [typeArray objectAtIndex:sdInteger]];
+    displayprice = [[NSString alloc] initWithFormat:@"%@", [priceArray objectAtIndex:sdInteger]];
+    displayan = [[NSString alloc] initWithFormat:@"%@", [maxArray objectAtIndex:sdInteger]];
 
     
     [nameLabel setText:displayname];

@@ -50,7 +50,7 @@
     
     
     //delete later!!!!!!
-    bizip = @"128.237.216.25";
+//    bizip = @"128.237.216.25";
     NSError *error = nil;
 	if (![socket connectToHost:bizip onPort:8001 error:&error])
 	{
