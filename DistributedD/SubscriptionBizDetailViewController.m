@@ -50,7 +50,7 @@
     
     
     //delete later!!!!!!
-    bizip = @"128.237.223.46";
+    bizip = @"128.237.216.25";
     NSError *error = nil;
 	if (![socket connectToHost:bizip onPort:8001 error:&error])
 	{
@@ -101,8 +101,8 @@
     NSLog(@"The userEmail is:%@",userEmail);
 
     NSLog(@"Button is working...");
-    NSString *requestStr = [NSString stringWithFormat:@"unsubscribe,%@,%@,hellohello,%@,%@,1",
-                            userAge, userEmail, userGender, userName];
+    NSString *requestStr = [NSString stringWithFormat:@"unsubscribe,%@",
+                            userEmail];
     NSLog(@"sbscribeString:::%@",requestStr);
     NSData *requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding];
     [socket writeData:requestData withTimeout:-1.0 tag:0];
@@ -123,6 +123,11 @@
     for(DS_DDBusiness *biz in array){
         if([[biz name]isEqualToString:bizname] && [[biz subscribe]isEqualToString:@"1"]){
             [managedObjectContext deleteObject:biz];
+            
+            UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Sucess" message:[NSString stringWithFormat:@"Business unsubscribed"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            
+            [wrongAlert show];
+
         }
     }
 

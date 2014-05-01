@@ -28,10 +28,10 @@
     <entity name="DS_DDDeal" representedClassName="DS_DDDeal" syncable="YES">
         <attribute name="d_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="end_date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="max_cust" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="start_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="end_date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="max_cust" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start_date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="business" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DS_DDBusiness" inverseName="deals" inverseEntity="DS_DDBusiness" syncable="YES"/>
@@ -40,6 +40,6 @@
         <element name="DS_DDBusiness" positionX="-63" positionY="27" width="128" height="180"/>
         <element name="DS_DDCustomer" positionX="-18" positionY="108" width="128" height="148"/>
         <element name="DS_DDCustomerGroup" positionX="-54" positionY="90" width="128" height="73"/>
-        <element name="DS_DDDeal" positionX="-36" positionY="99" width="128" height="178"/>
+        <element name="DS_DDDeal" positionX="-36" positionY="99" width="128" height="180"/>
     </elements>
 </model>

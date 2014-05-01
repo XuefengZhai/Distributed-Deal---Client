@@ -14,10 +14,10 @@
 
 @property (nonatomic, retain) NSNumber * d_id;
 @property (nonatomic, retain) NSString * desc;
-@property (nonatomic, retain) NSDate * end_date;
-@property (nonatomic, retain) NSNumber * max_cust;
-@property (nonatomic, retain) NSNumber * price;
-@property (nonatomic, retain) NSDate * start_date;
+@property (nonatomic, retain) NSString * end_date;
+@property (nonatomic, retain) NSString * max_cust;
+@property (nonatomic, retain) NSString * price;
+@property (nonatomic, retain) NSString * start_date;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * type;
 

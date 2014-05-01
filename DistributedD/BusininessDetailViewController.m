@@ -56,7 +56,7 @@
     //127.0.0.1
     
     //delete later!!!! just to set ip!!!!
-    bizip=@"128.237.223.46";
+    bizip=@"128.237.216.25";
     
     
     NSLog(@"Starting...");
@@ -109,7 +109,7 @@
 
 
     NSLog(@"Button is working...");
-    NSString *requestStr = [NSString stringWithFormat:@"subscribe,%@,%@,hellohello,%@,%@,1",
+    NSString *requestStr = [NSString stringWithFormat:@"subscribe,%@,%@,1,%@,%@,1",
                             userAge, userEmail, userGender, userName];
     NSLog(@"sbscribeString:::%@",requestStr);
     NSData *requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding];
@@ -173,9 +173,6 @@
     
     NSLog(@"New biz subscribe");
         
-        UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Sucess" message:[NSString stringWithFormat:@"Business subscribed"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        
-        [wrongAlert show];
 
         
     }

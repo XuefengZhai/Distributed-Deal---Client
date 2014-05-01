@@ -328,7 +328,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlX-n9-Wxz">
-                                <rect key="frame" x="98" y="446" width="107" height="30"/>
+                                <rect key="frame" x="98" y="363" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add to My Deal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -338,20 +338,20 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Available Numbers:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilB-XC-kgz">
-                                <rect key="frame" x="14" y="301" width="149" height="21"/>
+                                <rect key="frame" x="14" y="301" width="286" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBh-KF-NZo">
-                                <rect key="frame" x="15" y="202" width="44" height="21"/>
+                                <rect key="frame" x="15" y="202" width="261" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SN-tD-DFH">
-                                <rect key="frame" x="14" y="165" width="41" height="21"/>
+                                <rect key="frame" x="14" y="165" width="274" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -361,7 +361,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Deal Details" id="8xk-BP-pGq"/>
                     <connections>
-                        <outlet property="addDeal" destination="wlX-n9-Wxz" id="LYQ-hk-kXd"/>
+                        <outlet property="addDeal" destination="wlX-n9-Wxz" id="LXi-4h-DGs"/>
                         <outlet property="anLable" destination="ilB-XC-kgz" id="ZLk-Vo-UI0"/>
                         <outlet property="descLabel" destination="x1H-pU-gHE" id="eJ1-50-0Qa"/>
                         <outlet property="eDateLabel" destination="ZFb-a2-NgF" id="Ekk-i7-wvB"/>

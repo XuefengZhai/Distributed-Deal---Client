@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "DS_DDDeal.h"
 
 @interface BizDealInfoViewController : UIViewController{
     
@@ -17,6 +19,7 @@
      IBOutlet UILabel *typeLable;
      IBOutlet UILabel *priceLable;
      IBOutlet UILabel *anLable;
+     IBOutlet UIButton *addDeal;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
@@ -26,6 +29,9 @@
 @property (nonatomic, retain) IBOutlet UILabel *typeLable;
 @property (nonatomic, retain) IBOutlet UILabel *priceLable;
 @property (nonatomic, retain) IBOutlet UILabel *anLable;
+@property (nonatomic, retain) IBOutlet UIButton *addDeal;
+
+
 - (IBAction)addDeal:(id)sender;
 
 
