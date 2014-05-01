@@ -68,6 +68,8 @@ NSString * baseURL = @"https://api.usergrid.com";
     NSLog(@"push received: %@", dictPushNotification);
     
     NSDictionary* payloadAPS = [dictPushNotification valueForKey:@"aps"];
+    
+    
     if (nil == payloadAPS) {
         NSLog(@"error: no aps payload found");
         return;
@@ -77,6 +79,31 @@ NSString * baseURL = @"https://api.usergrid.com";
     [application enabledRemoteNotificationTypes];
     
     NSString* alertText = [payloadAPS valueForKey:@"alert"];
+    
+    if(![alertText isEqualToString:@"You have a good deal near you!"]){
+
+        
+        NSArray *reqArray = [alertText componentsSeparatedByString:@","];
+        
+        
+        
+        // Get all the deals, and find the max id
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DS_DDBusiness" inManagedObjectContext:managedObjectContext];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:entityDescription];
+        NSArray *array = [managedObjectContext executeFetchRequest:request error:nil];
+        
+        for(DS_DDBusiness *biz in array){
+            if([[biz subscribe]isEqualToString:@"1"] && [[biz name]isEqualToString: [reqArray objectAtIndex:0]]){
+
+                [biz setIp:[reqArray objectAtIndex:1]];
+            
+            }
+        }
+
+        
+        alertText = @"A business changed its IP";
+    }
     
     // enabled for sound?
     if (enabledTypes & UIRemoteNotificationTypeSound) {
