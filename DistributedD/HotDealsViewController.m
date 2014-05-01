@@ -17,6 +17,7 @@
     NSMutableArray *dealdesc;
     NSMutableArray *dealsdate;
     NSMutableArray *dealedate;
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -87,13 +88,13 @@
             i++;
             
             dealedateS =[array objectAtIndex:i];
-            [dealsdate addObject:dealedateS];
+            [dealedate addObject:dealedateS];
         }
         
         NSLog(@"namearray:%@",dealname);
         NSLog(@"descarray:%@",dealdesc);
         NSLog(@"sdatearray:%@",dealsdate);
-        NSLog(@"edatearray:%@",dealsdate);
+        NSLog(@"edatearray:%@",dealedate);
         
         
     }

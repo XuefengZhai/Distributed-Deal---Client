@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "AsyncSocket.h"
+#import "AppDelegate.h"
+#import "DS_DDBusiness.h"
+#import "SubscriptionDetailViewController.h"
+
 
 @interface SubscriptionBizDetailViewController : UIViewController<AsyncSocketDelegate>{
     AsyncSocket *socket;

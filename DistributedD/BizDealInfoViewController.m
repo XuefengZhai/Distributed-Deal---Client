@@ -17,6 +17,10 @@
     NSArray *descArray;
     NSArray *startdateArray;
     NSArray *enddateArray;
+    NSArray *typeArray;
+    NSArray *priceArray;
+    NSArray *maxArray;
+    NSArray *idArray;
     NSNumber *selectedDeal;
     
 }
@@ -50,13 +54,14 @@
     descArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"alldealdesc"];
     startdateArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"alldealstartdate"];
     enddateArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"alldealenddate"];
+    idArray =[[NSUserDefaults standardUserDefaults] objectForKey:@"alldealid"];
+    
+    priceArray =[[NSUserDefaults standardUserDefaults] objectForKey:@"alldealprice"];
+    maxArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"alldealmax"];
+    typeArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"alldealtype"];
+    
     selectedDeal = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedalldeals"];
     
-    NSLog(@"names:%@",nameArray);
-    NSLog(@"desc:%@",descArray);
-    NSLog(@"sdate:%@",startdateArray);
-    NSLog(@"edate:%@",enddateArray);
-    NSLog(@"%@",selectedDeal);
     
     NSInteger sdInteger = [selectedDeal integerValue];
     
@@ -66,7 +71,6 @@
     NSString *displayedate = [[NSString alloc] initWithFormat:@"End Date: %@", [enddateArray objectAtIndex:sdInteger]];
 
     
-    //需要添加上name：desc：startdate：enddate
     [nameLabel setText:displayname];
     [descLabel setText:displaydesc];
     [sDateLabel setText:displaysdate];

@@ -9,13 +9,16 @@
 #import "SubscriptionDetailViewController.h"
 
 @interface SubscriptionDetailViewController (){
-    NSArray *tableData;
+    NSMutableArray *bizNameArray;
+    NSMutableArray *bizDescArray;
+    NSMutableArray *bizIpArray;
 
 }
 
 @end
 
 @implementation SubscriptionDetailViewController
+@synthesize tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,9 +32,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tableData = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
     
-    // Do any additional setup after loading the view.
+    bizNameArray = [[NSMutableArray alloc] init];
+    bizDescArray =[[NSMutableArray alloc] init];
+    bizIpArray =[[NSMutableArray alloc] init];
+    
+    
+    NSManagedObjectContext *managedObjectContext = ((AppDelegate*)([[UIApplication sharedApplication] delegate])).managedObjectContext;
+    
+    // Get all the deals, and find the max id
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DS_DDBusiness" inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    NSArray *array = [managedObjectContext executeFetchRequest:request error:nil];
+    
+    for(DS_DDBusiness *biz in array){
+        if([[biz subscribe]isEqualToString:@"1"]){
+        [bizNameArray addObject:biz.name];
+        [bizDescArray addObject:biz.desc];
+        [bizIpArray addObject:biz.ip];
+        }
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +64,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [tableData count];
+    return [bizNameArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,8 +76,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
     }
-    cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = @"testtest";
+    cell.textLabel.text = [bizNameArray objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [bizDescArray objectAtIndex:indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     //[cell accessoryView ce]
     
@@ -68,9 +90,11 @@
     NSInteger row = indexPath.row;
     NSLog(@"row:%i",row);
     
-    NSString *selectedSubscribeBizName= @"Hello";
-    NSString *selectedSubscribeBizDesc = @"Desc";
-    NSString *selectedSubscribeBizIP =@"127.0.0.1";
+    
+    
+    NSString *selectedSubscribeBizName= [bizNameArray objectAtIndex:row];
+    NSString *selectedSubscribeBizDesc = [bizDescArray objectAtIndex:row];
+    NSString *selectedSubscribeBizIP =[bizIpArray objectAtIndex:row];
     
     
     [[NSUserDefaults standardUserDefaults] setValue:selectedSubscribeBizName forKey:@"selectedSubscribeBizName"];
@@ -78,6 +102,17 @@
     [[NSUserDefaults standardUserDefaults] setValue:selectedSubscribeBizIP forKey:@"selectedSubscribeBizIP"];
     [self performSegueWithIdentifier:@"subscriptionBDetail" sender:self]; //Change the seque identifier
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	NSLog(@">>> Entering %s <<<", __PRETTY_FUNCTION__);
+	
+	[[self tableView] reloadData];
+	
+	NSLog(@"<<< Leaving %s >>>", __PRETTY_FUNCTION__);
+}
+
+
 
 /*
  #pragma mark - Navigation

@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "DS_DDBusiness.h"
 
-@interface SubscriptionDetailViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
-
+@interface SubscriptionDetailViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>{
+    
+     IBOutlet UITableView *tableView;
+}
+@property (nonatomic,strong)UITableView *tableView;
 
 @end

@@ -56,7 +56,7 @@
     //127.0.0.1
     
     //delete later!!!! just to set ip!!!!
-    bizip=@"127.0.0.1";
+    bizip=@"128.237.223.46";
     
     
     NSLog(@"Starting...");
@@ -120,6 +120,65 @@
     }
     
     [self startRead];
+    
+    NSManagedObjectContext *managedObjectContext = ((AppDelegate*)([[UIApplication sharedApplication] delegate])).managedObjectContext;
+    
+    // Get all the deals, and find the max id
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DS_DDBusiness" inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    NSArray *array = [managedObjectContext executeFetchRequest:request error:nil];
+    
+    int flag =0;
+    for(DS_DDBusiness *biz in array){
+        if ([[biz name] isEqualToString:bizname]&&[[biz subscribe] isEqualToString:@"1"]) {
+            flag = 1;
+            break;
+        }
+    }
+    
+    if(flag ==1){
+        UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[NSString stringWithFormat:@"Business already subscribed"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [wrongAlert show];
+
+    }
+    
+    else{
+    NSNumber *max_id = 0;
+    for(DS_DDBusiness *biz in array){
+        if(max_id < biz.b_id){
+            max_id = biz.b_id;
+        }
+    }
+    
+    NSLog(@"Biz retrieved");
+    // Insert and populate new object
+    DS_DDBusiness *newBiz= [managedObjectContext insertNewObjectForEntityForName:@"DS_DDBusiness"];
+    
+    [newBiz setB_id:[NSNumber numberWithInt:([max_id integerValue] + 1)]];
+    [newBiz setName:bizname];
+    [newBiz setDesc:bizdesc];
+    [newBiz setIp:bizip];
+    [newBiz setSubscribe:@"1"];
+    
+    NSLog(@"bizsetname: %@",newBiz.name);
+    NSLog(@"bizsetdesc: %@",newBiz.desc);
+    NSLog(@"bizsetip: %@",newBiz.ip);
+    
+    NSError *executeError = nil;
+    if(![managedObjectContext saveToPersistentStore:&executeError]) {
+        NSLog(@"Failed to save to data store");
+    }
+    
+    NSLog(@"New biz subscribe");
+        
+        UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Sucess" message:[NSString stringWithFormat:@"Business subscribed"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [wrongAlert show];
+
+        
+    }
 
 }
 
@@ -189,42 +248,57 @@
 //        
 //    }
     else{
-        //NSArray *array = [response componentsSeparatedByString:@","];
-        NSArray *array = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"11", @"22", @"33", @"44",nil];
+        NSLog(@"inelse!!!!!!!!!!!");
+        NSArray *array = [response componentsSeparatedByString:@","];
         
-        NSMutableArray *alldealnames= [[NSMutableArray alloc] init];;
-        NSMutableArray *alldealdesc=[[NSMutableArray alloc] init];;
-        NSMutableArray *alldealstartdate=[[NSMutableArray alloc] init];;
-        NSMutableArray *alldealenddate=[[NSMutableArray alloc] init];;
+        NSMutableArray *alldealnames= [[NSMutableArray alloc] init];
+        NSMutableArray *alldealdesc=[[NSMutableArray alloc] init];
+        NSMutableArray *alldealstartdate=[[NSMutableArray alloc] init];
+        NSMutableArray *alldealenddate=[[NSMutableArray alloc] init];
+        NSMutableArray *alldealid =[[NSMutableArray alloc] init];
+        NSMutableArray *alldealprice =[[NSMutableArray alloc] init];
+        NSMutableArray *alldealmax =[[NSMutableArray alloc] init];
+        NSMutableArray *alldealtype =[[NSMutableArray alloc] init];
+        
         
         for(int i=0;i<array.count;i++)
         {
-            NSLog(@"object1:%@",[array objectAtIndex:i]);
+            [alldealid addObject:[array objectAtIndex:i]];
+            i++;
             [alldealnames addObject:[array objectAtIndex:i]];
             i++;
-            NSLog(@"object2:%@",[array objectAtIndex:i]);
             [alldealdesc addObject:[array objectAtIndex:i]];
             i++;
-            NSLog(@"object3:%@",[array objectAtIndex:i]);
+            [alldealtype addObject:[array objectAtIndex:i]];
+            i++;
+            [alldealmax addObject:[array objectAtIndex:i]];
+            i++;
             [alldealstartdate addObject:[array objectAtIndex:i]];
             i++;
-            NSLog(@"object4:%@",[array objectAtIndex:i]);
             [alldealenddate addObject:[array objectAtIndex:i]];
+            i++;
+            [alldealprice addObject:[array objectAtIndex:i]];
         }
         
-        
-        
-        
-        [[NSUserDefaults standardUserDefaults] setValue:alldealnames forKey:@"alldealnames"];
-        [[NSUserDefaults standardUserDefaults] setValue:alldealdesc forKey:@"alldealdesc"];
-        [[NSUserDefaults standardUserDefaults] setValue:alldealstartdate forKey:@"alldealstartdate"];
-        [[NSUserDefaults standardUserDefaults] setValue:alldealenddate forKey:@"alldealenddate"];
-        
-        NSLog(@"alldealnames:%@",array);
+        NSLog(@"alldealidarray:%@",alldealid);
         NSLog(@"alldealnames:%@",alldealnames);
         NSLog(@"alldealdesc:%@",alldealdesc);
+        NSLog(@"alldealtype:%@",alldealtype);
+        NSLog(@"alldealmax:%@",alldealmax);
         NSLog(@"alldealstartdate:%@",alldealstartdate);
         NSLog(@"alldealenddate:%@",alldealenddate);
+        NSLog(@"alldealprice:%@",alldealprice);
+        
+        
+        [[NSUserDefaults standardUserDefaults] setValue:alldealid forKey:@"alldealid"];
+        [[NSUserDefaults standardUserDefaults] setValue:alldealnames forKey:@"alldealnames"];
+        [[NSUserDefaults standardUserDefaults] setValue:alldealdesc forKey:@"alldealdesc"];
+        [[NSUserDefaults standardUserDefaults] setValue:alldealtype forKey:@"alldealtype"];
+        [[NSUserDefaults standardUserDefaults] setValue:alldealmax forKey:@"alldealmax"];
+        [[NSUserDefaults standardUserDefaults] setValue:alldealstartdate forKey:@"alldealstartdate"];
+        [[NSUserDefaults standardUserDefaults] setValue:alldealenddate forKey:@"alldealenddate"];
+        [[NSUserDefaults standardUserDefaults] setValue:alldealprice forKey:@"alldealprice"];
+
     }
     
 }

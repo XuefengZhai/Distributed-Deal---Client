@@ -23,8 +23,12 @@
     // Initialize the Core Data stack
     [managedObjectStore createPersistentStoreCoordinator];
     
-    NSPersistentStore __unused *persistentStore = [managedObjectStore addInMemoryPersistentStore:&error];
-    NSAssert(persistentStore, @"Failed to add persistent store: %@", error);
+    NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"DD_Store.sqlite"];
+    NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:path fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+    if (! persistentStore) {
+        RKLogError(@"Failed adding persistent store at path '%@': %@", path, error);
+    }
+
     
     [managedObjectStore createManagedObjectContexts];
     

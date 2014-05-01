@@ -49,6 +49,8 @@
 	socket = [[AsyncSocket alloc] initWithDelegate:self];
     
     
+    //delete later!!!!!!
+    bizip = @"128.237.223.46";
     NSError *error = nil;
 	if (![socket connectToHost:bizip onPort:8001 error:&error])
 	{
@@ -109,6 +111,21 @@
         NSLog(@"==============");
     }
     
+    
+    NSManagedObjectContext *managedObjectContext = ((AppDelegate*)([[UIApplication sharedApplication] delegate])).managedObjectContext;
+    
+    // Get all the deals, and find the max id
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DS_DDBusiness" inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    NSArray *array = [managedObjectContext executeFetchRequest:request error:nil];
+    
+    for(DS_DDBusiness *biz in array){
+        if([[biz name]isEqualToString:bizname] && [[biz subscribe]isEqualToString:@"1"]){
+            [managedObjectContext deleteObject:biz];
+        }
+    }
+
     [self startRead];
 
     

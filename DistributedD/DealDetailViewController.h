@@ -10,6 +10,16 @@
 
 @interface DealDetailViewController : UIViewController{
     
+     IBOutlet UILabel *nameLabel;
+     IBOutlet UILabel *descLabel;
+     IBOutlet UILabel *sdateLabel;
+     IBOutlet UILabel *edateLabel;
 }
+
+@property (nonatomic, retain) IBOutlet UILabel *nameLabel;
+@property (nonatomic, retain) IBOutlet UILabel *descLabel;
+@property (nonatomic, retain) IBOutlet UILabel *sdateLabel;
+@property (nonatomic, retain) IBOutlet UILabel *edateLabel;
+
 
 @end

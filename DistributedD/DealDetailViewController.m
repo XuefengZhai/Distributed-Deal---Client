@@ -8,11 +8,22 @@
 
 #import "DealDetailViewController.h"
 
-@interface DealDetailViewController ()
+@interface DealDetailViewController (){
+    NSArray *nameArray;
+    NSArray *descArray;
+    NSArray *startdateArray;
+    NSArray *enddateArray;
+    NSNumber *selectedDeal;
+
+}
 
 @end
 
 @implementation DealDetailViewController
+@synthesize nameLabel;
+@synthesize descLabel;
+@synthesize sdateLabel;
+@synthesize edateLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +37,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    
+    nameArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectdealname"];
+    descArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectdealdesc"];
+    startdateArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectdealsdate"];
+    enddateArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectdealedate"];
+    selectedDeal = [[NSUserDefaults standardUserDefaults] objectForKey:@"selecteddeal"];
+    
+    NSLog(@"names:%@",nameArray);
+    NSLog(@"desc:%@",descArray);
+    NSLog(@"sdate:%@",startdateArray);
+    NSLog(@"edate:%@",enddateArray);
+    NSLog(@"%@",selectedDeal);
+    
+    NSInteger sdInteger = [selectedDeal integerValue];
+    
+    NSString *displayname = [[NSString alloc] initWithFormat:@"Name: %@", [nameArray objectAtIndex:sdInteger]];
+    NSString *displaydesc = [[NSString alloc] initWithFormat:@"Description: %@", [descArray objectAtIndex:sdInteger]];
+    NSString *displaysdate = [[NSString alloc] initWithFormat:@"Start Date: %@", [startdateArray objectAtIndex:sdInteger]];
+    NSString *displayedate = [[NSString alloc] initWithFormat:@"End Date: %@", [enddateArray objectAtIndex:sdInteger]];
+    
+    
+    [nameLabel setText:displayname];
+    [descLabel setText:displaydesc];
+    [sdateLabel setText:displaysdate];
+    [edateLabel setText:displayedate];
+
+
+
 }
 
 - (void)didReceiveMemoryWarning

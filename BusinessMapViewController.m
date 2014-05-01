@@ -69,7 +69,20 @@
     currentLocation.longitude = curLocation.coordinate.longitude;
     
     
+    NSManagedObjectContext *managedObjectContext = ((AppDelegate*)([[UIApplication sharedApplication] delegate])).managedObjectContext;
     
+    // Get all the deals, and find the max id
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DS_DDBusiness" inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    NSArray *array = [managedObjectContext executeFetchRequest:request error:nil];
+    
+    for(DS_DDBusiness *biz in array){
+        if(![[biz subscribe]isEqualToString:@"1"]){
+            [managedObjectContext deleteObject:biz];
+        }
+    }
+
     
     
     
@@ -224,6 +237,13 @@
 //        [business setLongtd: [f numberFromString:[[object valueForKey:@"longtd"] description]]];
         
         [mapView addAnnotation:business];
+        
+        for(DS_DDBusiness *business2 in businesses){
+            if([[business name] isEqualToString:[business2 name]]){
+                business2.ip = business.ip;
+            }
+            
+        }
         
     }
     NSLog(@"loadBusinesses");

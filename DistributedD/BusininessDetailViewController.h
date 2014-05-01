@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AsyncSocket.h"
 #import "DS_DDBusiness.h"
+#import "AppDelegate.h"
 
 @interface BusininessDetailViewController : UIViewController<AsyncSocketDelegate>{
     AsyncSocket *socket;

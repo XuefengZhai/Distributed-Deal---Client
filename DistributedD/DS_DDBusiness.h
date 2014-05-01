@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSNumber * longtd;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *groups;
+@property (nonatomic, retain) NSString * subscribe;
 @end
 
 @interface DS_DDBusiness (CoreDataGeneratedAccessors)
