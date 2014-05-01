@@ -65,7 +65,7 @@
     NSInteger sdInteger = [selectedDeal integerValue];
     
      displayname = [[NSString alloc] initWithFormat:@"%@", [nameArray objectAtIndex:sdInteger]];
-    NSString *displaydesc = [[NSString alloc] initWithFormat:@"%@", [descArray objectAtIndex:sdInteger]];
+    NSString *displaydesc = [[NSString alloc] initWithFormat:@"%@", @"Discount"];
     NSString *displaysdate = [[NSString alloc] initWithFormat:@"%@", [startdateArray objectAtIndex:sdInteger]];
     NSString *displayedate = [[NSString alloc] initWithFormat:@"%@", [enddateArray objectAtIndex:sdInteger]];
     NSString *displayprice = [[NSString alloc] initWithFormat:@"%@", [priceArray objectAtIndex:sdInteger]];

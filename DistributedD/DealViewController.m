@@ -91,7 +91,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
     }
     cell.textLabel.text = [dealname objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [dealdesc objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = @"Discount";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     //[cell accessoryView ce]
     

@@ -168,6 +168,11 @@
     NSLog(@"bizsetdesc: %@",newBiz.desc);
     NSLog(@"bizsetip: %@",newBiz.ip);
     
+        
+        UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Sucess" message:[NSString stringWithFormat:@"Business  subscribed!"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [wrongAlert show];
+
     NSError *executeError = nil;
     if(![managedObjectContext saveToPersistentStore:&executeError]) {
         NSLog(@"Failed to save to data store");

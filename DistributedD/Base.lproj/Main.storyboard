@@ -868,7 +868,7 @@
         <scene sceneID="ceI-0m-MFr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QVI-gr-IM1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Business" id="Z7h-1E-pvt"/>
+                    <tabBarItem key="tabBarItem" title="Business" image="Flickr.png" id="Z7h-1E-pvt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jvA-0T-0NK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -887,7 +887,7 @@
         <scene sceneID="Mtb-wU-CbD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hBa-lr-YBK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Hot!" id="u1e-5L-l1D"/>
+                    <tabBarItem key="tabBarItem" title="Hot!" image="Favorites.png" id="u1e-5L-l1D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KV7-Yn-oQf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -906,7 +906,7 @@
         <scene sceneID="uhj-fK-bAo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tpF-VE-Z9g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Deals" id="RIx-PH-Vgv"/>
+                    <tabBarItem key="tabBarItem" title="Deals" image="Dollar.png" id="RIx-PH-Vgv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KUB-Hz-uS6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -922,6 +922,11 @@
             <point key="canvasLocation" x="741" y="1209"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Dollar.png" width="25" height="25"/>
+        <image name="Favorites.png" width="27" height="26"/>
+        <image name="Flickr.png" width="25" height="25"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

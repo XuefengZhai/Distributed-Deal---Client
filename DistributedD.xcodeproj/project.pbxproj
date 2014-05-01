@@ -15,6 +15,10 @@
 		2F24EE2619122A5300E4D6CE /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F24EE2519122A5300E4D6CE /* CoreTelephony.framework */; };
 		2F24EE2819122A5F00E4D6CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F24EE2719122A5F00E4D6CE /* QuartzCore.framework */; };
 		2F24EE2A19122A6900E4D6CE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F24EE2919122A6900E4D6CE /* SystemConfiguration.framework */; };
+		2F24EE2E1912353100E4D6CE /* Dollar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F24EE2B1912353100E4D6CE /* Dollar@2x.png */; };
+		2F24EE2F1912353100E4D6CE /* Favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F24EE2C1912353100E4D6CE /* Favorites@2x.png */; };
+		2F24EE301912353100E4D6CE /* Flickr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F24EE2D1912353100E4D6CE /* Flickr@2x.png */; };
+		2F24EE32191235AB00E4D6CE /* Games_iOS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F24EE31191235AB00E4D6CE /* Games_iOS@2x.png */; };
 		2F3790F318F0A5A1007B3422 /* LogIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3790F218F0A5A1007B3422 /* LogIn.m */; };
 		2F3C9E3F18F87E6D001160BF /* BusinessMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C9E3E18F87E6D001160BF /* BusinessMapViewController.m */; };
 		2F3C9E4818FB48AB001160BF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3C9E4718FB48AB001160BF /* CoreData.framework */; };
@@ -73,6 +77,10 @@
 		2F24EE2519122A5300E4D6CE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		2F24EE2719122A5F00E4D6CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2F24EE2919122A6900E4D6CE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2F24EE2B1912353100E4D6CE /* Dollar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Dollar@2x.png"; path = "../../../Downloads/pixellove_free/2x_normal/Dollar@2x.png"; sourceTree = "<group>"; };
+		2F24EE2C1912353100E4D6CE /* Favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Favorites@2x.png"; path = "../../../Downloads/pixellove_free/2x_normal/Favorites@2x.png"; sourceTree = "<group>"; };
+		2F24EE2D1912353100E4D6CE /* Flickr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Flickr@2x.png"; path = "../../../Downloads/pixellove_free/2x_normal/Flickr@2x.png"; sourceTree = "<group>"; };
+		2F24EE31191235AB00E4D6CE /* Games_iOS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Games_iOS@2x.png"; path = "../../../Downloads/pixellove_free/2x_normal/Games_iOS@2x.png"; sourceTree = "<group>"; };
 		2F3790F118F0A5A1007B3422 /* LogIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogIn.h; sourceTree = "<group>"; };
 		2F3790F218F0A5A1007B3422 /* LogIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogIn.m; sourceTree = "<group>"; };
 		2F3C9E3D18F87E6D001160BF /* BusinessMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusinessMapViewController.h; path = ../BusinessMapViewController.h; sourceTree = "<group>"; };
@@ -244,6 +252,10 @@
 		2F508CCF18E6615F00C4EB02 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2F24EE31191235AB00E4D6CE /* Games_iOS@2x.png */,
+				2F24EE2B1912353100E4D6CE /* Dollar@2x.png */,
+				2F24EE2C1912353100E4D6CE /* Favorites@2x.png */,
+				2F24EE2D1912353100E4D6CE /* Flickr@2x.png */,
 				2F508CD018E6615F00C4EB02 /* DistributedD-Info.plist */,
 				2F508CD118E6615F00C4EB02 /* InfoPlist.strings */,
 				2F508CD418E6615F00C4EB02 /* main.m */,
@@ -366,8 +378,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F24EE2F1912353100E4D6CE /* Favorites@2x.png in Resources */,
 				2F508CD318E6615F00C4EB02 /* InfoPlist.strings in Resources */,
 				2F508CDC18E6615F00C4EB02 /* Main.storyboard in Resources */,
+				2F24EE301912353100E4D6CE /* Flickr@2x.png in Resources */,
+				2F24EE32191235AB00E4D6CE /* Games_iOS@2x.png in Resources */,
+				2F24EE2E1912353100E4D6CE /* Dollar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
