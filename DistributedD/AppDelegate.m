@@ -94,7 +94,7 @@ NSString * baseURL = @"https://api.usergrid.com";
         NSArray *array = [managedObjectContext executeFetchRequest:request error:nil];
         
         for(DS_DDBusiness *biz in array){
-            if([[biz subscribe]isEqualToString:@"1"] && [[biz name]isEqualToString: [reqArray objectAtIndex:0]]){
+            if([[biz name]isEqualToString: [reqArray objectAtIndex:0]]){
 
                 [biz setIp:[reqArray objectAtIndex:1]];
             
