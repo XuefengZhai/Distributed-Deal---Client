@@ -58,7 +58,7 @@
 
 - (IBAction)signInButton:(id)sender {
     
-    NSString *urlBaseString = @"http://ec2-54-85-53-174.compute-1.amazonaws.com:8000/csignin?";
+    NSString *urlBaseString = @"http://ec2-54-86-125-98.compute-1.amazonaws.com:8000/csignin?";
     NSString *emailText =email.text;
     NSString *pswText = psw.text;
     NSString *urlFinal = [NSString stringWithFormat: @"%@Email=%@&Psw=%@",urlBaseString,emailText,pswText];
