@@ -310,7 +310,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1H-pU-gHE">
-                                <rect key="frame" x="14" y="124" width="286" height="36"/>
+                                <rect key="frame" x="14" y="126" width="286" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -328,11 +328,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlX-n9-Wxz">
-                                <rect key="frame" x="100" y="464" width="107" height="30"/>
+                                <rect key="frame" x="98" y="446" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add to My Deal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addDeal:" destination="Of4-4T-yca" eventType="touchUpInside" id="lHr-hD-eT8"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Available Numbers:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilB-XC-kgz">
                                 <rect key="frame" x="14" y="301" width="149" height="21"/>
@@ -358,10 +361,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Deal Details" id="8xk-BP-pGq"/>
                     <connections>
+                        <outlet property="addDeal" destination="wlX-n9-Wxz" id="LYQ-hk-kXd"/>
+                        <outlet property="anLable" destination="ilB-XC-kgz" id="ZLk-Vo-UI0"/>
                         <outlet property="descLabel" destination="x1H-pU-gHE" id="eJ1-50-0Qa"/>
                         <outlet property="eDateLabel" destination="ZFb-a2-NgF" id="Ekk-i7-wvB"/>
                         <outlet property="nameLabel" destination="n4X-xP-kN5" id="QYR-Xp-BzZ"/>
+                        <outlet property="priceLable" destination="lBh-KF-NZo" id="Dus-kD-oqS"/>
                         <outlet property="sDateLabel" destination="BRQ-dq-CcY" id="SkJ-L4-Efn"/>
+                        <outlet property="typeLable" destination="2SN-tD-DFH" id="ID5-ij-16y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iW4-I2-UWb" userLabel="First Responder" sceneMemberID="firstResponder"/>

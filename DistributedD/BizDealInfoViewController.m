@@ -23,6 +23,13 @@
     NSArray *idArray;
     NSNumber *selectedDeal;
     
+    NSString *displayname;
+    NSString *displaydesc;
+    NSString *displaysdate;
+    NSString *displaytype;
+    NSString *displayprice;
+    NSString *displayan;
+    NSString *displayedate;
 }
 
 
@@ -34,6 +41,9 @@
 @synthesize descLabel;
 @synthesize sDateLabel;
 @synthesize eDateLabel;
+@synthesize typeLable;
+@synthesize priceLable;
+@synthesize anLable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,17 +75,23 @@
     
     NSInteger sdInteger = [selectedDeal integerValue];
     
-    NSString *displayname = [[NSString alloc] initWithFormat:@"Name: %@", [nameArray objectAtIndex:sdInteger]];
-    NSString *displaydesc = [[NSString alloc] initWithFormat:@"Description: %@", [descArray objectAtIndex:sdInteger]];
-    NSString *displaysdate = [[NSString alloc] initWithFormat:@"Start Date: %@", [startdateArray objectAtIndex:sdInteger]];
-    NSString *displayedate = [[NSString alloc] initWithFormat:@"End Date: %@", [enddateArray objectAtIndex:sdInteger]];
+    displayname = [[NSString alloc] initWithFormat:@"Name: %@", [nameArray objectAtIndex:sdInteger]];
+    displaydesc = [[NSString alloc] initWithFormat:@"Description: %@", [descArray objectAtIndex:sdInteger]];
+    displaysdate = [[NSString alloc] initWithFormat:@"Start Date: %@", [startdateArray objectAtIndex:sdInteger]];
+    displayedate = [[NSString alloc] initWithFormat:@"End Date: %@", [enddateArray objectAtIndex:sdInteger]];
+    
+    displaytype = [[NSString alloc] initWithFormat:@"Type: %@", [typeArray objectAtIndex:sdInteger]];
+    displayprice = [[NSString alloc] initWithFormat:@"Price: %@", [priceArray objectAtIndex:sdInteger]];
+    displayan = [[NSString alloc] initWithFormat:@"Available Number: %@", [maxArray objectAtIndex:sdInteger]];
 
     
     [nameLabel setText:displayname];
     [descLabel setText:displaydesc];
     [sDateLabel setText:displaysdate];
     [eDateLabel setText:displayedate];
-
+    [typeLable setText:displaytype];
+    [priceLable setText:displayprice];
+    [anLable setText:displayan];
     
     
 }
@@ -97,4 +113,6 @@
  }
  */
 
+- (IBAction)addDeal:(id)sender {
+}
 @end
