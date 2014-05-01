@@ -13,10 +13,10 @@
 @end
 
 @implementation HotDealsViewController{
-    NSArray *dealname;
-    NSArray *dealdesc;
-    NSArray *dealsdate;
-    NSArray *dealedate;
+    NSMutableArray *dealname;
+    NSMutableArray *dealdesc;
+    NSMutableArray *dealsdate;
+    NSMutableArray *dealedate;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,10 +33,72 @@
     [super viewDidLoad];
     
     
-    dealname = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", nil];
-    dealdesc =[NSArray arrayWithObjects:@"Hello", @"Bye", @"Ahha", @"Noo",nil];
-    dealsdate = [NSArray arrayWithObjects:@"1-1", @"2-2", @"3-3", @"4-4",nil];
-    dealedate =[NSArray arrayWithObjects:@"5-1", @"6-2", @"7-3", @"8-4",nil];
+    
+    NSString *urlFinal = @"http://ec2-54-86-125-98.compute-1.amazonaws.com:8000/seehotdeals";
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlFinal]];
+    
+    [request setHTTPMethod:@"GET"];
+    
+    NSHTTPURLResponse *response = nil;
+    
+    NSData *responseData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    NSString* responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"responseString%@",responseString);
+    
+    
+    NSLog(@"ResponseCode:%d",[response statusCode]);
+    
+    
+    dealname = [[NSMutableArray alloc] init];
+    dealdesc = [[NSMutableArray alloc] init];
+    dealsdate =[[NSMutableArray alloc] init];
+    dealedate =[[NSMutableArray alloc] init];
+    if ([response statusCode] == 200)
+    {
+        NSLog(@"!!!!!!!!!");
+        NSLog(@"ButtonPressed");
+        NSLog(@"%@",urlFinal);
+        
+        NSArray *array = [responseString componentsSeparatedByString:@","];
+        NSLog(@"array:%@",array);
+        
+        NSString *dealnameS;
+        NSString *dealdescS;
+        NSString *dealsdateS;
+        NSString *dealedateS;
+
+        
+        for(int i=0;i<[array count];i++){
+            
+            dealnameS =[array objectAtIndex:i];
+            NSLog(@"dealnameS:%@",dealnameS);
+
+            [dealname addObject:dealnameS];
+            i++;
+            
+            dealdescS =[array objectAtIndex:i];
+            [dealdesc addObject:dealdescS];
+            i++;
+            
+            dealsdateS =[array objectAtIndex:i];
+            [dealsdate addObject:dealsdateS];
+            i++;
+            
+            dealedateS =[array objectAtIndex:i];
+            [dealsdate addObject:dealedateS];
+        }
+        
+        NSLog(@"namearray:%@",dealname);
+        NSLog(@"descarray:%@",dealdesc);
+        NSLog(@"sdatearray:%@",dealsdate);
+        NSLog(@"edatearray:%@",dealsdate);
+        
+        
+    }
+
+    
     
     [[NSUserDefaults standardUserDefaults] setValue:dealname forKey:@"selectdealname"];
     [[NSUserDefaults standardUserDefaults] setValue:dealdesc forKey:@"selectdealdesc"];

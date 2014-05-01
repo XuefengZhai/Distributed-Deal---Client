@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HotDealsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface HotDealsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>{
+
+}
+
+
 
 @end
