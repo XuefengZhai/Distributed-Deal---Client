@@ -1,21 +1,23 @@
 //
-//  SubscriptionDetailViewController.m
+//  HotDealsViewController.m
 //  DistributedD
 //
-//  Created by XZhai on 4/29/14.
+//  Created by XZhai on 4/30/14.
 //  Copyright (c) 2014 XZhai. All rights reserved.
 //
 
-#import "SubscriptionDetailViewController.h"
+#import "HotDealsViewController.h"
 
-@interface SubscriptionDetailViewController (){
-    NSArray *tableData;
-
-}
+@interface HotDealsViewController ()
 
 @end
 
-@implementation SubscriptionDetailViewController
+@implementation HotDealsViewController{
+    NSArray *dealname;
+    NSArray *dealdesc;
+    NSArray *dealsdate;
+    NSArray *dealedate;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +31,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tableData = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+    
+    
+    dealname = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", nil];
+    dealdesc =[NSArray arrayWithObjects:@"Hello", @"Bye", @"Ahha", @"Noo",nil];
+    dealsdate = [NSArray arrayWithObjects:@"1-1", @"2-2", @"3-3", @"4-4",nil];
+    dealedate =[NSArray arrayWithObjects:@"5-1", @"6-2", @"7-3", @"8-4",nil];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:dealname forKey:@"selectdealname"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealdesc forKey:@"selectdealdesc"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealsdate forKey:@"selectdealsdate"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealedate forKey:@"selectdealedate"];
+
     
     // Do any additional setup after loading the view.
 }
@@ -42,7 +55,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [tableData count];
+    return [dealname count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,8 +67,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
     }
-    cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = @"testtest";
+    cell.textLabel.text = [dealname objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [dealdesc objectAtIndex:indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     //[cell accessoryView ce]
     
@@ -67,16 +80,8 @@
 {
     NSInteger row = indexPath.row;
     NSLog(@"row:%i",row);
-    
-    NSString *selectedSubscribeBizName= @"Hello";
-    NSString *selectedSubscribeBizDesc = @"Desc";
-    NSString *selectedSubscribeBizIP =@"127.0.0.1";
-    
-    
-    [[NSUserDefaults standardUserDefaults] setValue:selectedSubscribeBizName forKey:@"selectedSubscribeBizName"];
-    [[NSUserDefaults standardUserDefaults] setValue:selectedSubscribeBizDesc forKey:@"selectedSubscribeBizDesc"];
-    [[NSUserDefaults standardUserDefaults] setValue:selectedSubscribeBizIP forKey:@"selectedSubscribeBizIP"];
-    [self performSegueWithIdentifier:@"subscriptionBDetail" sender:self]; //Change the seque identifier
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:indexPath.row] forKey:@"selecteddeal"];
+    [self performSegueWithIdentifier:@"hotdealdetail" sender:self]; //Change the seque identifier
 }
 
 /*

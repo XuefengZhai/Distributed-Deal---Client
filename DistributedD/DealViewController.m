@@ -14,7 +14,11 @@
 
 @implementation DealViewController
 {
-    NSArray *tableData;
+    NSArray *dealname;
+    NSArray *dealdesc;
+    NSArray *dealsdate;
+    NSArray *dealedate;
+
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,7 +33,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tableData = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+    
+    
+    dealname = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", nil];
+    dealdesc =[NSArray arrayWithObjects:@"Hello", @"Bye", @"Ahha", @"Noo",nil];
+    dealsdate = [NSArray arrayWithObjects:@"1-1", @"2-2", @"3-3", @"4-4",nil];
+    dealedate =[NSArray arrayWithObjects:@"5-1", @"6-2", @"7-3", @"8-4",nil];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:dealname forKey:@"selectdealname"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealdesc forKey:@"selectdealdesc"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealsdate forKey:@"selectdealsdate"];
+    [[NSUserDefaults standardUserDefaults] setValue:dealedate forKey:@"selectdealedate"];
+    
     
     // Do any additional setup after loading the view.
 }
@@ -42,7 +57,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [tableData count];
+    return [dealname count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,8 +69,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
     }
-    cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = @"testtest";
+    cell.textLabel.text = [dealname objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [dealdesc objectAtIndex:indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     //[cell accessoryView ce]
     
@@ -67,18 +82,19 @@
 {
     NSInteger row = indexPath.row;
     NSLog(@"row:%i",row);
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:indexPath.row] forKey:@"selecteddeal"];
     [self performSegueWithIdentifier:@"dealdetail" sender:self]; //Change the seque identifier
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

@@ -60,12 +60,17 @@
     
     NSInteger sdInteger = [selectedDeal integerValue];
     
+    NSString *displayname = [[NSString alloc] initWithFormat:@"Name: %@", [nameArray objectAtIndex:sdInteger]];
+    NSString *displaydesc = [[NSString alloc] initWithFormat:@"Description: %@", [descArray objectAtIndex:sdInteger]];
+    NSString *displaysdate = [[NSString alloc] initWithFormat:@"Start Date: %@", [startdateArray objectAtIndex:sdInteger]];
+    NSString *displayedate = [[NSString alloc] initWithFormat:@"End Date: %@", [enddateArray objectAtIndex:sdInteger]];
+
     
     //需要添加上name：desc：startdate：enddate
-    [nameLabel setText:[nameArray objectAtIndex:sdInteger]];
-    [descLabel setText:[descArray objectAtIndex:sdInteger]];
-    [sDateLabel setText:[startdateArray objectAtIndex:sdInteger]];
-    [eDateLabel setText:[enddateArray objectAtIndex:sdInteger]];
+    [nameLabel setText:displayname];
+    [descLabel setText:displaydesc];
+    [sDateLabel setText:displaysdate];
+    [eDateLabel setText:displayedate];
 
     
     

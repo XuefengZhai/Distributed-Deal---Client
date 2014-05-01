@@ -56,7 +56,7 @@
     //127.0.0.1
     
     //delete later!!!! just to set ip!!!!
-    bizip=@"128.237.218.41";
+    bizip=@"127.0.0.1";
     
     
     NSLog(@"Starting...");
